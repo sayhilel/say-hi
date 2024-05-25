@@ -16,7 +16,7 @@ func main() {
 	})
 
 	app.Get("/", handlers.LandingHandler)
-	app.Post("/projects", handlers.ProjectsHandler)
-	app.Post("/collapse", handlers.CollapseHandler)
+	app.Post("/project/:num", handlers.ProjectsHandler)
+
 	log.Fatal(app.Listen(":3000"))
 }

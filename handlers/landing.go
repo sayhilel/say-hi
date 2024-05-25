@@ -12,15 +12,23 @@ func LandingHandler(c *fiber.Ctx) error {
 }
 
 func ProjectsHandler(c *fiber.Ctx) error {
-	p := content.Project{Name: "PJ1", Url: "PJ1.com", Description: "It does it all"}
 
-	return c.Render("index", fiber.Map{
-		"Name": p.Name + " -> " + p.Description + " -> " + p.Url,
-	})
-}
+	p := content.Project{Name: "PJX", Url: "X.com", Description: "X"}
 
-func CollapseHandler(c *fiber.Ctx) error {
-	return c.Render("index", fiber.Map{
-		"Name": "PJ1",
+	switch c.Params("num") {
+	case "1":
+		p.Name = "PJ1"
+		p.Description = "Desc 1"
+		p.Url = "a"
+
+	case "2":
+		p.Name = "PJ2"
+		p.Description = "Desc 2"
+		p.Url = "b"
+
+	}
+
+	return c.Render("project", fiber.Map{
+		"Project": p.Name + " -> " + p.Description + " -> " + p.Url,
 	})
 }
