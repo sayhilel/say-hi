@@ -11,9 +11,8 @@ import (
 func main() {
 	engine := html.New("./views", ".html")
 
-	app := fiber.New(fiber.Config{
-		Views: engine,
-	})
+	app := fiber.New(fiber.Config{Views: engine})
+	app.Static("/", "./public")
 
 	app.Get("/", handlers.LandingHandler)
 	app.Post("/project/:num", handlers.ProjectsHandler)

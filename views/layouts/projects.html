@@ -1,0 +1,7 @@
+{{ block "project" .}}
+<button hx-post="/project/1" hx-target="main"> Project 1 </button>
+<button hx-post="/project/2" hx-target="main"> Project 2 </button>
+<div> Name: {{.Name}}</div>
+<div> Description: {{.Description}}</div>
+<div> Url: {{.Url}}</div>
+{{end}}
