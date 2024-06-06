@@ -1,19 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <title>Say Hi!</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale =1" />
+    <script src="scripts/htmx.min.js"></script>
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
 
-<head>
-	<title>SAY HI!</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale =1">
-	<script src="scripts/htmx.min.js"></script>
-	<link href="css/style.css" rel="stylesheet">
-</head>
-
-<body>
-	<main>
-		<button hx-post="/project/1" hx-target="main"> Project 1 </button>
-		<button hx-post="/project/2" hx-target="main"> Project 2 </button>
-	</main>
-</body>
-
+  <body>
+    <main>
+      <section class="contact-me"></section>
+      <section class="about-me"></section>
+      <section class="projects">
+        <div class="buttons">
+          <button hx-post="/project/0" hx-target="#project-tray">
+            Project 1
+          </button>
+          <button hx-post="/project/1" hx-target="#project-tray">
+            Project 2
+          </button>
+        </div>
+        <div class="project-tray" id="project-tray"></div>
+      </section>
+    </main>
+  </body>
 </html>
