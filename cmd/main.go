@@ -21,11 +21,10 @@ func main() {
 
 	app := fiber.New(fiber.Config{Views: engine})
 	app.Static("/", "./public")
-
+	
 	app.Get("/", handlers.LandingHandler)
-	app.Post("/project/:num", func(c* fiber.Ctx) error {
-		return handlers.ProjectsHandler(c, pl)
-		})
+	app.Get("/about-me", handlers.ViewAboutMe)
+	app.Get("/projects", handlers.ViewProjects)
 
 	log.Fatal(app.Listen(":3000"))
 }

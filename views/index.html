@@ -9,20 +9,14 @@
   </head>
 
   <body>
-    <main>
-      <section class="contact-me"></section>
-      <section class="about-me"></section>
-      <section class="projects">
-        <div class="buttons">
-          <button hx-post="/project/0" hx-target="#project-tray">
-            Project 1
-          </button>
-          <button hx-post="/project/1" hx-target="#project-tray">
-            Project 2
-          </button>
-        </div>
-        <div class="project-tray" id="project-tray"></div>
+    <header>
+      <section class="nav">
+        <button hx-get="/about-me" hx-target="#main">About Me</button>
+        <button hx-get="/projects" hx-target="#main">Projects</button>
+        <button hx-get="/contact-me-form" hx-target="#main">Contact Me</button>
       </section>
-    </main>
+    </header>
+    <main id="main"></main>
+    <footer><section class="contact-me">Contact Info</section></footer>
   </body>
 </html>

@@ -1,5 +1,6 @@
 * {
   font-family: "Times New Roman";
+  margin: 10px;
 }
 
 body,
@@ -8,6 +9,23 @@ html {
   padding: 0;
   background-color: #1A1B26;
   height: 100%;
+}
+
+.nav  {
+  background-color: #333;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+
+}
+
+.contact-me {
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: #333;
+  position: absolute;
+  bottom: 0;
 }
 
 .projects {
@@ -20,7 +38,7 @@ html {
 .buttons {
   display: flex;
   flex-direction: column;
-   gap: 10px;
+  gap: 10px;
 }
 
 

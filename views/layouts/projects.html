@@ -1,5 +1,14 @@
 {{ block "project" .}}
-<div> Name: {{.Name}}</div>
-<div> Description: {{.Description}}</div>
-<div> Url: {{.Url}}</div>
-{{end}}
+<h2>
+  Some Projects I worked On
+  <h2>
+    <div class="projects">
+      <div class="buttons">
+        <button hx-get="/project/0" hx-target="#project-tray">Project 1</button>
+        <button hx-get="/project/1" hx-target="#project-tray">Project 2</button>
+      </div>
+      <div class="project-tray" id="project-tray"></div>
+    </div>
+    {{end}}
+  </h2>
+</h2>
