@@ -1,5 +1,5 @@
 * {
-  font-family: "Times New Roman";
+  font-family: "font sans";
   margin: 10px;
 }
 
@@ -34,6 +34,14 @@ html {
   padding: 10px;
 
 }
+
+.project-tray {
+  flex-grow: 1;
+  background-color: #333;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-left: 20px;
+  margin-right: 20px;}
 
 .buttons {
   display: flex;
