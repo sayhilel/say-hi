@@ -26,5 +26,9 @@ func main() {
 
 	app.Get("/projects", handlers.ViewProjects)
 	app.Get("/projects/:index", pl.SwitchProject)
+
+	app.Get("/contact-me", handlers.ViewContactMe)
+	app.Get("/resume", handlers.ViewResume)
+
 	log.Fatal(app.Listen(":3000"))
 }

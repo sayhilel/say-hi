@@ -15,3 +15,11 @@ func ViewProjects(c *fiber.Ctx) error {
 func ViewAboutMe(c *fiber.Ctx) error {
 	return c.Render("layouts/about-me", fiber.Map{})
 }
+
+func ViewContactMe(c *fiber.Ctx) error {
+	return c.Render("layouts/contact-me", fiber.Map{})
+}
+
+func ViewResume(c *fiber.Ctx) error {
+	return c.Render("layouts/resume", fiber.Map{})
+}
