@@ -10,9 +10,8 @@ func LandingHandler(c *fiber.Ctx) error {
 
 func ViewProjects(c *fiber.Ctx) error {
 	return c.Render("layouts/projects", fiber.Map{})
-} 
+}
 
 func ViewAboutMe(c *fiber.Ctx) error {
 	return c.Render("layouts/about-me", fiber.Map{})
-} 
-
+}

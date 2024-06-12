@@ -1,22 +1,35 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>Say Hi!</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale =1" />
-    <script src="scripts/htmx.min.js"></script>
-    <link href="css/style.css" rel="stylesheet" />
-  </head>
 
-  <body>
-    <header>
-      <section class="nav">
-        <button hx-get="/about-me" hx-target="#main">About Me</button>
-        <button hx-get="/projects" hx-target="#main">Projects</button>
-        <button hx-get="/contact-me-form" hx-target="#main">Contact Me</button>
+<head>
+  <title>Say Hi!</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale =1" />
+  <script src="scripts/htmx.min.js"></script>
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <section class="display">
+    <section class="nav">
+      <ul>
+        <li> <button hx-get="/about-me" hx-target="#main">About Me</button> </li>
+        <li><button hx-get="/projects" hx-target="#main">Projects</button> </li>
+        <li><button hx-get="/contact-me-form" hx-target="#main">Contact Me</button> </li>
+        <li><button hx-get="/resume" hx-target="#main">Resume</button> </li>
+      </ul>
+    </section>
+    <main id="main" , class="main">
+      <section class="check">
+        Hey, I am Sahil Sinha
+        <h2>Education</h2>
+        ASU!!
       </section>
-    </header>
-    <main id="main"></main>
-    <footer><section class="contact-me">Contact Info</section></footer>
-  </body>
+    </main>
+  </section>
+</body>
+<footer>
+  <section class="contact-me">Contact Info</section>
+</footer>
+
 </html>

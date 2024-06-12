@@ -10,17 +10,16 @@ import (
 
 func main() {
 	engine := html.New("./views", ".html")
-	
 	app := fiber.New(fiber.Config{Views: engine})
 	app.Static("/", "./public")
-	
+
 	app.Get("/", handlers.LandingHandler)
 	app.Get("/about-me", handlers.ViewAboutMe)
-	
+
 	pl := handlers.Plist{{
-		Name:	"X",
-		Url:	"X.com", 
-		Description:	"No",
+		Name:        "X",
+		Url:         "X.com",
+		Description: "No",
 	}}
 
 	pl = append(pl, handlers.Project{Name: "Y", Url: "Y.com", Description: "Yes"})
