@@ -1,0 +1,10 @@
+[[project]]
+name = "mpac"
+description = """ MPAC (or mpac) is a Rust-based CLI tool for Linux and macOS, designed to asynchronously update multiple repositories with a single command. 
+It utilizes Tokio for async operations and Clap for command-line parsing, ensuring efficient and user-friendly management of your repos."""
+url = "https://github.com/sayhilel/mpac"
+
+[[project]]
+name = "test"
+description = "test"
+url = "test"

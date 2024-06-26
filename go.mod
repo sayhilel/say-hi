@@ -3,6 +3,7 @@ module github.com/sayhilel/say-hi
 go 1.22.3
 
 require (
+	github.com/BurntSushi/toml v1.4.0
 	github.com/gofiber/fiber/v2 v2.52.4
 	github.com/gofiber/template/html/v2 v2.1.1
 )

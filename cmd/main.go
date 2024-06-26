@@ -5,7 +5,8 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html/v2"
-	"github.com/sayhilel/say-hi/handlers"
+	projects "github.com/sayhilel/say-hi/internal"
+	"github.com/sayhilel/say-hi/internal/handlers"
 )
 
 func main() {
@@ -16,16 +17,14 @@ func main() {
 	app.Get("/", handlers.LandingHandler)
 	app.Get("/about-me", handlers.ViewAboutMe)
 
-	pl := handlers.Plist{{
-		Name:        "X",
-		Url:         "X.com",
-		Description: "No",
-	}}
+	ps := projects.InitProjects()
 
-	pl = append(pl, handlers.Project{Name: "Y", Url: "Y.com", Description: "Yes"})
+	print(ps.PL[0].Description)
 
 	app.Get("/projects", handlers.ViewProjects)
-	app.Get("/projects/:index", pl.SwitchProject)
+	app.Get("/projects/:index", func(c *fiber.Ctx) error {
+		return handlers.SwitchProject(ps, c)
+	})
 
 	app.Get("/contact-me", handlers.ViewContactMe)
 	app.Get("/resume", handlers.ViewResume)
