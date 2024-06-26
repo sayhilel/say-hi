@@ -19,8 +19,6 @@ func main() {
 
 	ps := projects.InitProjects()
 
-	print(ps.PL[0].Description)
-
 	app.Get("/projects", handlers.ViewProjects)
 	app.Get("/projects/:index", func(c *fiber.Ctx) error {
 		return handlers.SwitchProject(ps, c)

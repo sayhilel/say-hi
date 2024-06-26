@@ -1,4 +1,10 @@
-{{block "project" .}} {{.Name}} <br />
-{{.Url}} <br />
-{{.Description}} <br />
+{{block "project" .}}
+<img src={{.Image}} width="120" height="90" />
+<a href={{.Url}}> View </a>
+<main>
+    {{.Name}}
+
+    {{.Description}} <br />
+</main>
+
 {{end}}

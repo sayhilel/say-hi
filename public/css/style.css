@@ -1,92 +1,36 @@
 * {
-  font-family: "font sans";
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    font-family: "Helvetica";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body,
 html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-
-button {
-  appearance: none;
-  background-color: #000000;
-  border: 2px solid #1A1A1A;
-  border-radius: 15px;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: inline-block;
-  font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 12px;
-  font-weight: 600;
-  line-height: normal;
-  margin: 0;
-  min-height: 20px;
-  min-width: 0;
-  outline: none;
-  padding: 4px 8px;
-  text-align: center;
-  text-decoration: none;
-  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: 100%;
-  will-change: transform;
-}
-
-button:disabled {
-  pointer-events: none;
-}
-
-button:hover {
-  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-  transform: translateY(-2px);
-}
-
-button:active {
-  box-shadow: none;
-  transform: translateY(0);
+    margin: 0;
+    padding: 0;
+    background-color: #0D1117;
+    height: 100%;
 }
 
 .display {
-  display: flex;
-  height: 100vh;
-  padding-top: 10vh;
-  padding-left: 35vh;
-  padding-right: 35vh;
-  gap: 20px;
+    display: flex;
+    height: 100vh;
+    padding-top: 10vh;
+    padding-left: 15vh;
+    padding-right: 35vh;
+    gap: 20px;
 }
 
 .nav {
-  color: #fff;
-  flex: 0 0 125px;
-  padding: 20px;
-  border-radius: 10px;
+    color: #fff;
+    flex: 0 0 125px;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 #main {
-  flex: 1;
-  padding: 40px;
-  border-radius: 10px;
-}
-
-.projects .buttons {
-  display: flex;
-  gap: 0;
-}
-
-.projects .buttons button {
-  clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
-  margin: 0;
-}
-
-.projects .buttons button+button {
-  margin-left: -10%;
+    flex: 1;
+    padding: 40px;
+    border-radius: 10px;
 }

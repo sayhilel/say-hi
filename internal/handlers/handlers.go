@@ -38,5 +38,6 @@ func SwitchProject(ps projects.Projects, c *fiber.Ctx) error {
 		"Name":        p.Name,
 		"Description": p.Description,
 		"Url":         p.Url,
+		"Image":       p.Image,
 	})
 }

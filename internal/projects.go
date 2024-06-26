@@ -15,6 +15,7 @@ type Project struct {
 	Name        string
 	Description string
 	Url         string
+	Image       string
 }
 
 type Projects struct {
