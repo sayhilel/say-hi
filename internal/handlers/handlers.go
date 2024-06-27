@@ -5,6 +5,17 @@ import (
 	"github.com/sayhilel/say-hi/internal"
 )
 
+type handler func(c *fiber.Ctx) error
+
+var CommandHandler = map[string]handler{
+	"projects": ViewProjects,
+	"aboutme":  ViewAboutMe,
+}
+
+func HandleInvalid(c *fiber.Ctx) error {
+	return c.Render("layouts/invalid", fiber.Map{})
+}
+
 func LandingHandler(c *fiber.Ctx) error {
 	return c.Render("index", fiber.Map{})
 }
@@ -32,6 +43,27 @@ func SwitchProject(ps projects.Projects, c *fiber.Ctx) error {
 		return c.Status(fiber.StatusBadRequest).SendString("Invalid project index")
 	}
 
+	p := ps.PL[index]
+
+	return c.Render("layouts/project", fiber.Map{
+		"Name":        p.Name,
+		"Description": p.Description,
+		"Url":         p.Url,
+		"Image":       p.Image,
+	})
+}
+
+func NavigateProject(ps projects.Projects, c *fiber.Ctx) error {
+	index, err := c.ParamsInt("index", 0)
+	if err != nil {
+		return c.Status(fiber.StatusBadRequest).SendString("Invalid project index")
+	}
+
+	index += 1
+
+	if index > len(ps.PL) {
+		index = 0
+	}
 	p := ps.PL[index]
 
 	return c.Render("layouts/project", fiber.Map{

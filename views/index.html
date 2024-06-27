@@ -12,25 +12,32 @@
 
 <body>
 
-    <section class="display">
-        <section class="nav">
-            <ul>
-                <li> <button hx-get="/about-me" hx-target="#main">About</button> </li>
-                <li><button hx-get="/projects" hx-target="#main">Projects</button> </li>
-                <li><button hx-get="/contact-me" hx-target="#main">Contact</button> </li>
-            </ul>
-        </section>
-        <main id="main" , class="main">
-            <section class="check">
-                Hey, I am Sahil Sinha
-                <h2>Education</h2>
-                ASU!!
+    <div class="terminal">
+        <div class="terminal-decorations">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+        <div class="terminal-window">
+            <section class="content" id="content">
+                {{template "prompt" .}}
             </section>
-        </main>
-    </section>
-</body>
+        </div>
+    </div>
+    <!--
+       </body>
 <footer>
+
+    <section class="nav">
+                    <ul>
+                        <li> <button hx-get="/about-me" hx-target="#main">About</button> </li>
+                        <li> </li>
+                        <li><button hx-get="/contact-me" hx-target="#main">Contact</button> </li>
+                    </ul>
+                </section>
+
     <section class="contact-me">Contact Info</section>
 </footer>
+-->
 
 </html>

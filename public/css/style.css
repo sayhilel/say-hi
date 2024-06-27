@@ -1,36 +1,80 @@
 * {
-    font-family: "Helvetica";
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    font-family: 'Fira Code', monospace;
+
 }
 
-body,
-html {
-    margin: 0;
-    padding: 0;
-    background-color: #0D1117;
-    height: 100%;
-}
-
-.display {
+body {
     display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
-    padding-top: 10vh;
-    padding-left: 15vh;
-    padding-right: 35vh;
-    gap: 20px;
+    margin: 0;
+    background-color: #2e2e2e;
+    color: #dcdcdc;
 }
 
-.nav {
-    color: #fff;
-    flex: 0 0 125px;
+.terminal {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    width: 80%;
+    max-width: 800px;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+}
+
+.terminal-decorations {
+    background-color: #333;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot:first-child {
+    background-color: #ff5f56;
+}
+
+.dot:nth-child(2) {
+    background-color: #ffbd2e;
+}
+
+.dot:nth-child(3) {
+    background-color: #27c93f;
+}
+
+.terminal-window {
+    color: #dcdcdc;
     padding: 20px;
-    border-radius: 10px;
+    flex-grow: 1;
+    overflow-y: auto;
+    line-height: 1.5;
+    font-size: 1rem;
 }
 
-#main {
-    flex: 1;
-    padding: 40px;
-    border-radius: 10px;
+.prompt {
+    display: flex;
+    flex-direction: row;
+    /* Changed to row to align elements horizontally */
+    align-items: center;
+    /* Center align items vertically */
+    margin-bottom: 10px;
+    /* Add spacing between prompts */
+}
+
+
+.prompt::before {
+    content: "viewer@say-hi ❯";
+    margin-right: 10px;
+    color: #6d9cbe;
 }

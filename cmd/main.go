@@ -19,9 +19,23 @@ func main() {
 
 	ps := projects.InitProjects()
 
+	app.Post("/command", func(c *fiber.Ctx) error {
+		command := c.FormValue("command")
+		execFunc := handlers.CommandHandler[command]
+
+		if execFunc == nil {
+			return handlers.HandleInvalid(c)
+		}
+		return execFunc(c)
+	})
+
 	app.Get("/projects", handlers.ViewProjects)
 	app.Get("/projects/:index", func(c *fiber.Ctx) error {
 		return handlers.SwitchProject(ps, c)
+	})
+
+	app.Get("/projects/navigate/:index", func(c *fiber.Ctx) error {
+		return handlers.NavigateProject(ps, c)
 	})
 
 	app.Get("/contact-me", handlers.ViewContactMe)
