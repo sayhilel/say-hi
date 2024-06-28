@@ -15,23 +15,12 @@ func main() {
 
 	app.Get("/", handlers.LandingHandler)
 	app.Get("/about-me", handlers.ViewAboutMe)
-	app.Get("/about-me", handlers.ViewAboutMe)
 	app.Get("/contact-me", handlers.ViewContactMe)
-
-	app.Post("/command", func(c *fiber.Ctx) error {
-		command := c.FormValue("command")
-		execFunc := handlers.CommandHandler[command]
-
-		if execFunc == nil {
-			return handlers.HandleInvalid(c)
-		}
-		return execFunc(c)
-	})
+	app.Post("/command", handlers.HandleCommands)
 
 	ps := projects.InitProjects()
-
 	app.Get("/projects/:index", func(c *fiber.Ctx) error {
-		return handlers.HandleProjects(ps, c)
+		return ps.HandleProjects(c)
 	})
 
 	log.Fatal(app.Listen(":3000"))
