@@ -1,12 +1,11 @@
 package main
 
 import (
-	"log"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html/v2"
 	projects "github.com/sayhilel/say-hi/internal"
 	"github.com/sayhilel/say-hi/internal/handlers"
+	"log"
 )
 
 func main() {
@@ -16,8 +15,8 @@ func main() {
 
 	app.Get("/", handlers.LandingHandler)
 	app.Get("/about-me", handlers.ViewAboutMe)
-
-	ps := projects.InitProjects()
+	app.Get("/about-me", handlers.ViewAboutMe)
+	app.Get("/contact-me", handlers.ViewContactMe)
 
 	app.Post("/command", func(c *fiber.Ctx) error {
 		command := c.FormValue("command")
@@ -29,17 +28,11 @@ func main() {
 		return execFunc(c)
 	})
 
-	app.Get("/projects", handlers.ViewProjects)
+	ps := projects.InitProjects()
+
 	app.Get("/projects/:index", func(c *fiber.Ctx) error {
-		return handlers.SwitchProject(ps, c)
+		return handlers.HandleProjects(ps, c)
 	})
-
-	app.Get("/projects/navigate/:index", func(c *fiber.Ctx) error {
-		return handlers.NavigateProject(ps, c)
-	})
-
-	app.Get("/contact-me", handlers.ViewContactMe)
-	app.Get("/resume", handlers.ViewResume)
 
 	log.Fatal(app.Listen(":3000"))
 }

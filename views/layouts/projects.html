@@ -1,12 +1,16 @@
 {{ block "projects" .}}
 <h2>Some Projects I worked On</h2>
+<script src="/scripts/nav.js"></script>
+
 <section class="projects">
     <div class="selector-box">
-        <ul id="selector" hx-get="/projects/navigate/0" hx-trigger="keydown from:body">
+        <ul class="selector">
             <li>P0</li>
             <li>P1</li>
+            <li>P2</li>
         </ul>
+        <div class="project-box" id="project-box"> </div>
     </div>
-
 </section>
+
 {{end}}
