@@ -6,12 +6,16 @@ import (
 
 func HandleCommands(c *fiber.Ctx) error {
 	switch c.FormValue("command") {
+
 	default:
 		return HandleInvalid(c)
-	case "aboutme":
+	case "whoami":
 		return ViewAboutMe(c)
-	case "projects":
+	case "p":
 		return ViewProjects(c)
+	case "contact":
+		return ViewContactMe(c)
+
 	}
 }
 

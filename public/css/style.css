@@ -4,7 +4,7 @@
 }
 
 .highlight {
-    background-color: #ff0;
+    background-color: #fff;
 }
 
 
@@ -23,7 +23,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     width: 80%;
-    max-width: 800px;
+    max-width: 1600px;
     height: 800px;
     display: flex;
     flex-direction: column;
@@ -70,11 +70,8 @@ body {
 .prompt {
     display: flex;
     flex-direction: row;
-    /* Changed to row to align elements horizontally */
     align-items: center;
-    /* Center align items vertically */
     margin-bottom: 10px;
-    /* Add spacing between prompts */
 }
 
 

@@ -1,8 +1,6 @@
 {{ block "projects" .}}
 <h2>Some Projects I worked On</h2>
-<script src="/scripts/nav.js"></script>
-
-<section class="projects">
+<section class="projects" id="projects" tabindex="0">
     <div class="selector-box">
         <ul class="selector">
             <li>P0</li>
@@ -12,5 +10,29 @@
         <div class="project-box" id="project-box"> </div>
     </div>
 </section>
+{{template "cprompt" .}}
+
+<script> let allProjects = document.querySelectorAll(".selector li");
+    let currentIndex = 0;
+    allProjects[currentIndex].classList.add("highlight");
+    const totalProjects = allProjects.length;
+
+    document.getElementById("projects").addEventListener("keydown", function (event) {
+        const url = `/projects/${currentIndex}`;
+        switch (event.key) {
+            case "ArrowUp":
+                allProjects[currentIndex].classList.remove("highlight");
+                currentIndex = (currentIndex - 1 + totalProjects) % totalProjects;
+                allProjects[currentIndex].classList.add("highlight");
+                htmx.ajax('GET', url, '#project-box');
+                break;
+            case "ArrowDown":
+                allProjects[currentIndex].classList.remove("highlight");
+                currentIndex = (currentIndex + 1) % totalProjects;
+                allProjects[currentIndex].classList.add("highlight");
+                htmx.ajax('GET', url, '#project-box');
+                break;
+        }
+    });</script>
 
 {{end}}

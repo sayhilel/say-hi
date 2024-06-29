@@ -1,8 +1,5 @@
 {{block "prompt" .}}
-<div class="prompt">
-    <form hx-post="/command" hx-target="#content">
-        <input type="text" name="command">
-    </form>
-</div>
-
+<form hx-post="/command" hx-target="#terminal-window">
+    <input type="text" name="command">
+</form>
 {{end}}

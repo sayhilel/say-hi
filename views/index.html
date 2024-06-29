@@ -12,19 +12,24 @@
 </head>
 
 <body>
-
-    <div class="terminal">
+    <main class="terminal">
         <div class="terminal-decorations">
             <span class="dot"></span>
             <span class="dot"></span>
             <span class="dot"></span>
         </div>
-        <div class="terminal-window">
-            <section class="content" id="content">
-                {{template "prompt" .}}
-            </section>
+        <div class="terminal-window" id="terminal-window">
+            {{template "about-me" .}}
         </div>
-    </div>
+    </main>
+
+    <script>
+        document.addEventListener("keydown", function (event) {
+            if (event.ctrlKey && event.key === "c") {
+                htmx.ajax('GET', "about-me", '#terminal-window');
+            }
+        });
+    </script>
 </body>
 
 </html>
