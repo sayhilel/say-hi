@@ -5,9 +5,7 @@
     <title>Say Hi!</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale =1" />
-    <script src="https://unpkg.com/htmx.org@2.0.0"
-        integrity="sha384-wS5l5IKJBvK6sPTKa2WZ1js3d947pvWXbPJ1OmWfEuxLgeHcEbjUUA5i9V5ZkpCw"
-        crossorigin="anonymous"></script>
+    <script src="/scripts/htmx.js"> </script>
     <link href="css/style.css" rel="stylesheet" />
 </head>
 
@@ -23,13 +21,8 @@
         </div>
     </main>
 
-    <script>
-        document.addEventListener("keydown", function (event) {
-            if (event.ctrlKey && event.key === "c") {
-                htmx.ajax('GET', "about-me", '#terminal-window');
-            }
-        });
-    </script>
+    <script src="/scripts/nav.js"></script>
+    <script> document.addEventListener("keydown", returnHome); </script>
 </body>
 
 </html>
