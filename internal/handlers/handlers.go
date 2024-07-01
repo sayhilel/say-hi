@@ -11,9 +11,9 @@ func HandleCommands(c *fiber.Ctx) error {
 		return HandleInvalid(c)
 	case "whoami":
 		return ViewAboutMe(c)
-	case "p":
+	case "showcase":
 		return ViewProjects(c)
-	case "contact":
+	case "ping":
 		return ViewContactMe(c)
 
 	}
