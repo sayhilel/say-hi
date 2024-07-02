@@ -1,10 +1,12 @@
 {{block "project" .}}
-<img src={{.Image}} width="120" height="90" />
-<a href={{.Url}}> View </a>
-<main>
-    {{.Name}}
-
-    {{.Description}} <br />
-</main>
+<section class="project">
+    <a href={{.Url}}>
+        <span>
+            <h2>{{.Name}}</h2>
+        </span>
+    </a>
+    <p>{{.Description}}</p>
+    <pre>{{.Image}}</pre>
+</section>
 
 {{end}}

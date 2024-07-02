@@ -16,23 +16,25 @@ function listenNav() {
             // Projects
             let projects = document.getElementById("projects");
             if (projects) {
+                let currIndex = index;
                 let opt = document.querySelectorAll(".selector li");
-
-                const url = `/projects/${index}`;
+                let numOpt = opt.length
                 switch (event.key) {
                     case "ArrowUp":
                         opt[index].classList.remove("highlight");
-                        index = (index - 1 + opt.length) % opt.length;
+                        index = (index - 1 + numOpt) % numOpt;
                         opt[index].classList.add("highlight");
-                        htmx.ajax('GET', url, '#project-box');
                         break;
                     case "ArrowDown":
                         opt[index].classList.remove("highlight");
-                        index = (index + 1) % opt.length;
+                        index = (index + 1) % numOpt;
                         opt[index].classList.add("highlight");
-                        htmx.ajax('GET', url, '#project-box');
                         break;
 
+                }
+                if (currIndex !== index) {
+                    const url = `/projects/${index}`;
+                    htmx.ajax('GET', url, { target: '#project-box' });
                 }
             }
 
@@ -47,29 +49,24 @@ function dragElement(elmnt) {
     function dragMouseDown(e) {
         e = e || window;
         e.preventDefault();
-        // get the mouse cursor position at startup:
         pos3 = e.clientX;
         pos4 = e.clientY;
         document.onmouseup = closeDragElement;
-        // call a function whenever the cursor moves:
         document.onmousemove = elementDrag;
     }
 
     function elementDrag(e) {
         e = e || window;
         e.preventDefault();
-        // calculate the new cursor position:
         pos1 = pos3 - e.clientX;
         pos2 = pos4 - e.clientY;
         pos3 = e.clientX;
         pos4 = e.clientY;
-        // set the element's new position:
         elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
         elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
     }
 
     function closeDragElement() {
-        // stop moving when mouse button is released:
         document.onmouseup = null;
         document.onmousemove = null;
     }

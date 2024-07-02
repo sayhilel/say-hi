@@ -1,3 +1,8 @@
+:root {
+    --accents: #79C0FF;
+    --nav: #315E46;
+}
+
 @font-face {
     font-family: Iosevka-Term;
     src: url("./fonts/iosevka-term-extendedmedium.ttf");
@@ -11,13 +16,23 @@
     background-color: #fff;
 }
 
+h2 {
+    color: var(--accents)
+}
+
+a {
+    text-decoration: none;
+}
+
 body {
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /*background: url("images/MacOS_BG.webp");*/
+    background: url("images/TealMounatains.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
     height: 100vh;
 }
 
@@ -78,12 +93,13 @@ body {
 
 .prompt {
     display: flex;
+    color: var(--nav);
 }
 
 .prompt::before {
     content: "viewer@say-hi ❯";
     margin-right: 10px;
-    color: #6d9cbe;
+    color: var(--accents);
 }
 
 .prompt input {
@@ -94,6 +110,35 @@ body {
     color: #6d9cbe;
 }
 
+/* Project Customization */
+.projects {
+    display: flex;
+    flex-direction: row;
+}
+
+.projects ul {
+    width: 20vw;
+}
+
+
+.project-box {
+    width: 80vw;
+    max-width: 800px;
+    padding: 2.5rem;
+    border: 0.10rem solid #333;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.project pre {
+    color: red;
+}
+
+.project span {
+    background-image: url("images/external-link.png");
+}
+
+/* Dock Customization */
 .dock {
     border-radius: 10px;
     display: flex;
@@ -124,3 +169,5 @@ body {
 .dock a:nth-child(3) {
     background-image: url("images/github.svg");
 }
+
+/*TESTING*/

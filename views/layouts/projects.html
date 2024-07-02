@@ -1,16 +1,12 @@
 {{ block "projects" .}}
-<h2>Some Projects I worked On</h2>
+<h2>Showcase: Projects</h2>
+{{template "cprompt" .}}
 <section class="projects" id="projects">
-    <div class="selector-box">
-        <ul class="selector">
-            <li>P0</li>
-            <li>P1</li>
-            <li>P2</li>
-        </ul>
-        <div class="project-box" id="project-box"> </div>
-    </div>
-    <div class="pprompr">
-        {{template "cprompt" .}}
-    </div>
+    <ul class="selector">
+        <li>say.hi</li>
+        <li>mpac</li>
+        <li>dotfile</li>
+    </ul>
+    <div class="project-box" id="project-box"> </div>
 </section>
 {{end}}
