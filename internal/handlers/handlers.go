@@ -23,6 +23,10 @@ func HandleInvalid(c *fiber.Ctx) error {
 	return c.Render("layouts/invalid", fiber.Map{})
 }
 
+func ViewLanding(c *fiber.Ctx) error {
+	return c.Render("layouts/landing", fiber.Map{})
+}
+
 func LandingHandler(c *fiber.Ctx) error {
 	return c.Render("index", fiber.Map{})
 }

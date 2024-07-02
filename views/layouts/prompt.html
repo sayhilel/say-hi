@@ -1,3 +1,12 @@
 {{block "prompt" .}}
-<input type="text" name="command" id="command" hx-post="/command" hx-target="#terminal-window">
+<div class="prompt">
+    <input type="text" name="command" id="command" list="allcommands" hx-post="/command" hx-target="#terminal-window"
+        autofocus>
+    <datalist id="allcommands">
+        <option value="whoami">
+        <option value="showcase">
+        <option value="ping">
+    </datalist>
+</div>
+
 {{end}}

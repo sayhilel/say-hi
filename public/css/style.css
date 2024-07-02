@@ -1,30 +1,35 @@
-* {
-    font-family: 'Fira Code', monospace;
+@font-face {
+    font-family: Iosevka-Term;
+    src: url("./fonts/iosevka-term-extendedmedium.ttf");
+}
 
+* {
+    font-family: Iosevka-Term;
 }
 
 .highlight {
     background-color: #fff;
 }
 
-
 body {
+    overflow: hidden;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    /*background: url("images/MacOS_BG.webp");*/
     height: 100vh;
-    margin: 0;
-    background-color: #2e2e2e;
-    color: #dcdcdc;
 }
 
 .terminal {
+    position: absolute;
     background-color: #1e1e1e;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    width: 80%;
-    max-width: 1600px;
-    height: 800px;
+    width: 80vw;
+    max-width: 1000px;
+    height: 80vh;
+    max-height: 1000px;
     display: flex;
     flex-direction: column;
 }
@@ -36,6 +41,10 @@ body {
     justify-content: flex-start;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+}
+
+.terminal-decorations:hover {
+    cursor: grab;
 }
 
 .dot {
@@ -69,14 +78,49 @@ body {
 
 .prompt {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 10px;
 }
-
 
 .prompt::before {
     content: "viewer@say-hi ❯";
     margin-right: 10px;
     color: #6d9cbe;
+}
+
+.prompt input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    color: #6d9cbe;
+}
+
+.dock {
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 0.5vh;
+    width: 80vw;
+    max-width: 800px;
+    backdrop-filter: blur(10vh);
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.dock a {
+    height: 2.5rem;
+    width: 2.5rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.dock a:first-child {
+    background-image: url("images/linkedin.svg");
+}
+
+.dock a:nth-child(2) {
+    background-image: url("images/github.svg");
+}
+
+.dock a:nth-child(3) {
+    background-image: url("images/github.svg");
 }

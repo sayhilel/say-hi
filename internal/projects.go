@@ -1,9 +1,8 @@
 package projects
 
 import (
-	"github.com/gofiber/fiber/v2"
-
 	"github.com/BurntSushi/toml"
+	"github.com/gofiber/fiber/v2"
 	"os"
 )
 
@@ -57,4 +56,15 @@ func (P Projects) HandleProjects(c *fiber.Ctx) error {
 		"Url":         p.Url,
 		"Image":       p.Image,
 	})
+}
+
+func (P Projects) VisitProject(c *fiber.Ctx) error {
+	//index, err := c.ParamsInt("index", 0)
+	//if err != nil {
+	//	return c.Status(fiber.StatusBadRequest).SendString("Invalid project index")
+	//}
+
+	//p := P.PL[index]
+
+	return c.Redirect("https://www.google.com/")
 }
