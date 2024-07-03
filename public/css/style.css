@@ -41,6 +41,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
+    transition: background-image 0.3s ease-in-out;
 }
 
 .terminal {
