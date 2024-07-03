@@ -16,7 +16,8 @@ type Project struct {
 	Name        string
 	Description string
 	Url         string
-	Image       string
+	Ascii       string
+	Accent      string
 }
 
 type Projects struct {
@@ -54,17 +55,7 @@ func (P Projects) HandleProjects(c *fiber.Ctx) error {
 		"Name":        p.Name,
 		"Description": p.Description,
 		"Url":         p.Url,
-		"Image":       p.Image,
+		"Ascii":       p.Ascii,
+		"Accent":      p.Accent,
 	})
-}
-
-func (P Projects) VisitProject(c *fiber.Ctx) error {
-	//index, err := c.ParamsInt("index", 0)
-	//if err != nil {
-	//	return c.Status(fiber.StatusBadRequest).SendString("Invalid project index")
-	//}
-
-	//p := P.PL[index]
-
-	return c.Redirect("https://www.google.com/")
 }
