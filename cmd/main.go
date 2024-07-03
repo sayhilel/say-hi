@@ -1,14 +1,14 @@
 package main
 
 import (
-	"log"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/favicon"
 	"github.com/gofiber/template/html/v2"
 	projects "github.com/sayhilel/say-hi/internal"
 	"github.com/sayhilel/say-hi/internal/handlers"
+	"log"
+	"os"
 )
 
 func main() {
@@ -37,6 +37,10 @@ func main() {
 	app.Get("/projects/:index/view", func(c *fiber.Ctx) error {
 		return c.Redirect("https://gofiber.net", 301)
 	})
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "3000"
+	}
 
-	log.Fatal(app.Listen(":8080"))
+	log.Fatal(app.Listen(port))
 }
