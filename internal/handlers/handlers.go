@@ -16,8 +16,13 @@ func HandleCommands(c *fiber.Ctx) error {
 		return ViewProjects(c)
 	case "ping":
 		return ViewContactMe(c)
-
+	case "clear":
+		return ClearField(c)
 	}
+}
+
+func ClearField(c *fiber.Ctx) error {
+	return c.Render("layouts/prompt", fiber.Map{})
 }
 
 func HandleInvalid(c *fiber.Ctx) error {
