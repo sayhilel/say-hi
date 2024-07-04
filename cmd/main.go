@@ -9,7 +9,6 @@ import (
 	"github.com/sayhilel/say-hi/internal/projects"
 	"log"
 	"os"
-	"strings"
 )
 
 func main() {
@@ -23,21 +22,9 @@ func main() {
 		cors.New(cors.Config{
 			AllowHeaders: "Access-Control-Allow-Origin",
 		}),
-
-		func(c *fiber.Ctx) error {
-			userAgent := c.Get("User-Agent")
-			if strings.Contains(strings.ToLower(userAgent), "mobile") {
-				return c.Redirect("/mobile")
-			}
-			return c.Next()
-		},
 	)
 
-	app.Get("/mobile", handlers.HandleInvalid)
 	app.Get("/", handlers.LandingHandler)
-	app.Get("/about-me", handlers.ViewAboutMe)
-	app.Get("/landing", handlers.ViewLanding)
-	app.Get("/contact-me", handlers.ViewContactMe)
 	app.Post("/command", handlers.HandleCommands)
 
 	ps := projects.InitProjects()

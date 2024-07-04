@@ -3,6 +3,7 @@ package handlers
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/sayhilel/say-hi/internal/quotes"
+	"strings"
 )
 
 func HandleCommands(c *fiber.Ctx) error {
@@ -34,6 +35,11 @@ func ViewLanding(c *fiber.Ctx) error {
 }
 
 func LandingHandler(c *fiber.Ctx) error {
+	userAgent := c.Get("User-Agent")
+	if strings.Contains(strings.ToLower(userAgent), "mobile") {
+		return c.Render("layouts/mobile", fiber.Map{})
+	}
+
 	return c.Render("index", fiber.Map{
 		"content": "Use (C-c) to refresh this page for a random quote.",
 		"author":  "Sahil Sinha",
