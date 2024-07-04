@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"github.com/gofiber/fiber/v2"
+	"github.com/sayhilel/say-hi/internal/quotes"
 )
 
 func HandleCommands(c *fiber.Ctx) error {
@@ -24,11 +25,14 @@ func HandleInvalid(c *fiber.Ctx) error {
 }
 
 func ViewLanding(c *fiber.Ctx) error {
-	return c.Render("layouts/landing", fiber.Map{})
+	return c.Render("layouts/landing", quote.GetQuote())
 }
 
 func LandingHandler(c *fiber.Ctx) error {
-	return c.Render("index", fiber.Map{})
+	return c.Render("index", fiber.Map{
+		"content": "Use (C-c) to refresh this page for a random quote.",
+		"author":  "Sahil Sinha",
+	})
 }
 
 func ViewAboutMe(c *fiber.Ctx) error {

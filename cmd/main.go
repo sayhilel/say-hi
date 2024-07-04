@@ -5,8 +5,8 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/favicon"
 	"github.com/gofiber/template/html/v2"
-	projects "github.com/sayhilel/say-hi/internal"
 	"github.com/sayhilel/say-hi/internal/handlers"
+	"github.com/sayhilel/say-hi/internal/projects"
 	"log"
 	"os"
 )
