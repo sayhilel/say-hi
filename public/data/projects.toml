@@ -2,8 +2,20 @@
 name = "say-hi"
 description = "portfolio-website"
 url = "https://github.com/sayhilel/say-hi"
-ascii = "images/test.jpg"
-accent = "#fffff"
+ascii = """         
+        ,_---~~~~~----._         
+  _,,_,*^____      _____``*g*"*, 
+ / __/ /'     ^.  /       ^@q   f 
+[  @f | @))    |  | @))   l  0 _  
+ `/   ~____ / __ _____/       
+  |           _l__l_           I   
+  }          [______]           I  
+  ]            | | |            |  
+  ]             ~ ~             |  
+  |                            |   
+  |                           | 
+"""
+accent = "blue"
 
 [[project]]
 name = "mpac"
@@ -30,5 +42,22 @@ accent = "red"
 name = "dotfiles"
 description = "My Linux dotfiles"
 url = "https://github.com/sayhilel/say-hi"
-ascii = "images/test.jpg"
-accent = "#fffff"
+ascii = """⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⡄⠀⠀⠀⠀⠀⠎⠀⠀⣀⡀⠀⠘⢠⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⢀⠀⠀⠀⠀⣠⣴⢶⠋⠉⢉⡽⢢⡈⠀⠐⠀⠀⠀⠀⡀⠀⠀
+⠀⠀⠀⠀⣀⠀⢀⡞⢉⣀⡈⠀⠀⠀⠈⠐⡘⣆⠀⠀⠀⠀⠀⢃⡄⠀
+⠀⠀⠀⠀⢀⢀⢾⠞⠁⠀⢳⡀⠀⠀⡞⠁⠈⢻⡄⡁⠱⠒⢢⠘⠀⠀
+⠀⠀⠀⠀⡀⣸⡞⠀⣾⡇⢰⡧⠔⢤⣧⢸⣷⠈⣧⠱⣀⠄⠂⠀⠀⠀
+⡔⠐⠒⠂⠄⣧⣇⠀⠩⠄⠈⠻⠶⠞⠃⠀⠭⠀⣼⡤⠄⠒⠂⠐⠀⠃
+⢣⠀⠀⠀⠀⢺⠻⢦⣀⡀⠀⠀⣀⣤⣀⣀⣠⠼⡇⠀⠀⠀⠀⡰⠀⠀
+⠀⠱⡀⠀⠀⠀⠃⠀⠈⠁⠀⠀⠀⠀⠸⠀⠀⠰⢣⠀⠀⠀⠔⠁⠀⠀
+⠀⠀⠈⢒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢳⠒⠉⠀⠀⠀⠀
+⠀⣀⢠⡎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢃⠀⠀⠀⠀⠀
+⠀⠠⠁⠃⠀⠀⠔⡂⠒⠲⠤⡀⠀⠀⠀⠀⡠⠊⠡⠠⣜⠀⠀⠀⠀⠀
+⠀⢂⠀⢣⠀⢸⠀⠇⠀⠀⢠⠁⠀⠀⠀⠀⡇⢸⠀⢀⠌⡀⠀⠀⠀⠀
+⠀⠀⠉⠁⠑⠂⠦⣈⣠⡠⠧⠄⠒⠒⠒⠀⠧⠐⠠⠋⠀⠁⠀⠀⠀⠀"""
+accent = "white"
+
+[[project]]
+name = "numConverter"
+description = "Model Program to be used to demonstrate the debugging process to CSE 240' using tools such GDB & valgrind"
