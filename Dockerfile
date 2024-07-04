@@ -1,13 +1,20 @@
-# Start from the latest golang base image
 FROM golang:latest
+
+ENV GO111MODULE=on \
+    CGO_ENABLED=0 \
+    GOOS=linux \
+    GOARCH=amd64
 
 WORKDIR /app
 
-RUN git clone https://github.com/sayhilel/say-hi.git .
+COPY go.mod .
+COPY go.sum .
 
-RUN go mod tidy
+RUN go mod download
 
-RUN go build -o main cmd/main.go
+COPY . .
+
+RUN go build -o main ./cmd
 
 EXPOSE 8080
 
