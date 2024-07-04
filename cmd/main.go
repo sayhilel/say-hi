@@ -27,13 +27,13 @@ func main() {
 		func(c *fiber.Ctx) error {
 			userAgent := c.Get("User-Agent")
 			if strings.Contains(strings.ToLower(userAgent), "mobile") {
-				return c.Redirect("/mobile-only")
+				return c.Redirect("/mobile")
 			}
 			return c.Next()
 		},
 	)
 
-	app.Get("/", handlers.HandleInvalid)
+	app.Get("/mobile", handlers.HandleInvalid)
 	app.Get("/", handlers.LandingHandler)
 	app.Get("/about-me", handlers.ViewAboutMe)
 	app.Get("/landing", handlers.ViewLanding)
