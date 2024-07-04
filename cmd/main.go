@@ -25,6 +25,7 @@ func main() {
 	)
 
 	app.Get("/", handlers.LandingHandler)
+	app.Get("/landing", handlers.ViewLanding)
 	app.Post("/command", handlers.HandleCommands)
 
 	ps := projects.InitProjects()
