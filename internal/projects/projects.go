@@ -13,11 +13,12 @@ func check(e error) {
 }
 
 type Project struct {
-	Name        string
-	Description string
-	Url         string
-	Ascii       string
-	Accent      string
+	Name         string
+	Technologies string
+	Description  string
+	Url          string
+	Ascii        string
+	Accent       string
 }
 
 type Projects struct {
@@ -52,10 +53,11 @@ func (P Projects) HandleProjects(c *fiber.Ctx) error {
 	p := P.PL[index]
 
 	return c.Render("layouts/project", fiber.Map{
-		"Name":        p.Name,
-		"Description": p.Description,
-		"Url":         p.Url,
-		"Ascii":       p.Ascii,
-		"Accent":      p.Accent,
+		"Name":         p.Name,
+		"Technologies": p.Technologies,
+		"Description":  p.Description,
+		"Url":          p.Url,
+		"Ascii":        p.Ascii,
+		"Accent":       p.Accent,
 	})
 }

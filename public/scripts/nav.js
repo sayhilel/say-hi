@@ -24,11 +24,13 @@ function listenNav() {
                         opt[index].classList.remove("highlight");
                         index = (index - 1 + numOpt) % numOpt;
                         opt[index].classList.add("highlight");
+                        event.preventDefault()
                         break;
                     case "ArrowDown":
                         opt[index].classList.remove("highlight");
                         index = (index + 1) % numOpt;
                         opt[index].classList.add("highlight");
+                        event.preventDefault()
                         break;
 
                 }
