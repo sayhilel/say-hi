@@ -44,6 +44,13 @@ body {
     transition: background-image 0.3s ease-in-out;
 }
 
+.maximized {
+    width: 10vw;
+    height: 10vh;
+    background-color: #ffffff;
+
+}
+
 .terminal {
     position: absolute;
     background-color: #1e1e1e;
