@@ -17,6 +17,8 @@ func HandleCommands(c *fiber.Ctx) error {
 		return ViewProjects(c)
 	case "ping":
 		return ViewContactMe(c)
+	case "more":
+		return OpenConfirmation(c)
 	case "clear":
 		return ClearField(c)
 	}
@@ -43,6 +45,12 @@ func LandingHandler(c *fiber.Ctx) error {
 	return c.Render("index", fiber.Map{
 		"content": "Use (C-c) to refresh this page for a random quote.",
 		"author":  "Sahil Sinha",
+	})
+}
+
+func OpenConfirmation(c *fiber.Ctx) error {
+	return c.Render("layouts/dialog-box", fiber.Map{
+		"appl": "Open resume?",
 	})
 }
 

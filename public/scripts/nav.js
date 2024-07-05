@@ -5,6 +5,8 @@ function listenNav() {
             // Global
             if (event.ctrlKey && event.key === "c") {
                 htmx.ajax('GET', "landing", '#terminal-window');
+                event.preventDefault();
+                return
             }
 
             // Prompt
@@ -37,6 +39,18 @@ function listenNav() {
                 if (currIndex !== index) {
                     const url = `/projects/${index}`;
                     htmx.ajax('GET', url, { target: '#project-box' });
+                }
+            }
+
+            let dialog = document.getElementById("dialog");
+            if (dialog) {
+                switch (event.key) {
+                    case "y":
+                        window.open("data/resume.pdf", "_blank");
+                        htmx.ajax('GET', "landing", '#terminal-window');
+                    case "n":
+                        htmx.ajax('GET', "landing", '#terminal-window');
+
                 }
             }
 
