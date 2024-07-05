@@ -46,7 +46,7 @@ function listenNav() {
             if (dialog) {
                 switch (event.key) {
                     case "y":
-                        window.open("data/resume.pdf", "_blank");
+                        window.open("https://github.com/sayhilel/resume/blob/main/pub/resume_pub.pdf", "_blank");
                         htmx.ajax('GET', "landing", '#terminal-window');
                     case "n":
                         htmx.ajax('GET', "landing", '#terminal-window');
