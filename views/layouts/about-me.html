@@ -1,9 +1,10 @@
 {{block "about-me" .}}
+<h2> Whoami: About-Me </h2>
+<p> [Use (C-c) to return.] </p>
 <section class="aboutme">
-    <h2> Whoami: About-Me </h2>
-    <p> [Use (C-c) to return.] </P>
-
-    Hey viewer, my name is <h4>Sahil<h4> <br>
-            {{template "prompt" .}}
+    <p>Hey viewer, my name is
+    <h4>Sahil<h4>
+            </p>
 </section>
+{{template "prompt" .}}
 {{end}}

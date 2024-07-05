@@ -17,6 +17,7 @@
     background-color: #fff;
 }
 
+/* Tags */
 h1,
 h2,
 h3 {
@@ -32,6 +33,12 @@ a {
     text-decoration: none;
 }
 
+p {
+    display: inline;
+}
+
+
+/* Documents */
 body {
     overflow: hidden;
     display: flex;
