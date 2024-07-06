@@ -77,6 +77,10 @@ body {
     cursor: grab;
 }
 
+.terminal-decorations span:hover {
+    cursor: pointer;
+}
+
 .dot {
     height: 12px;
     width: 12px;
