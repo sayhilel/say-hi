@@ -31,12 +31,12 @@ func main() {
 	app.Get("/projects/:index", func(c *fiber.Ctx) error {
 		return ps.HandleProjects(c)
 	})
-	app.Get("/projects/:index/view", func(c *fiber.Ctx) error {
-		return c.Redirect("https://gofiber.net", 301)
-	})
+
 	port := os.Getenv("PORT")
+
 	if port == "" {
 		port = "8080"
 	}
+
 	log.Fatal(app.Listen(":" + port))
 }

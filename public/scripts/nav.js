@@ -90,5 +90,5 @@ function dragElement(elmnt) {
 
 function toggleTerminal() {
     var div = document.getElementById("terminal");
-    div.style.display = div.style.display == "none" ? "block" : "none";
+    div.style.display = div.style.display == "none" ? "flex" : "none";
 }

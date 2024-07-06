@@ -6,7 +6,7 @@ import (
 )
 
 func GetQuote() map[string]string {
-	agent := fiber.Get("https://api.quotable.io/random")
+	agent := fiber.Get("https://api.quotable.io/random?tags=technology|education|Inspirational|Science")
 	_, body, errs := agent.Bytes()
 
 	result := map[string]string{
