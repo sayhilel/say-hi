@@ -1,4 +1,3 @@
-# flyctl launch added from .gitignore
-**/tmp
+go.mod .
+go.sum .
 
-fly.toml

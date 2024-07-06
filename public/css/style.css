@@ -37,7 +37,6 @@ p {
     display: inline;
 }
 
-
 /* Documents */
 body {
     overflow: hidden;
@@ -126,6 +125,13 @@ body {
     outline: none;
 }
 
+/* About-me */
+.aboutme img {
+    width: 300px;
+    border-radius: 0.75rem;
+    height: 200px;
+}
+
 /* Landing */
 .landing {
     display: flex;
@@ -139,8 +145,6 @@ body {
 
 .projects ul {
     width: 20vw;
-
-
 }
 
 
@@ -197,4 +201,8 @@ body {
 
 .dock a:nth-child(2) {
     background-image: url("images/github.svg");
+}
+
+.dock a:nth-child(3) {
+    background-image: url("images/gmail.svg");
 }

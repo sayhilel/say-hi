@@ -23,7 +23,6 @@ func main() {
 			AllowHeaders: "Access-Control-Allow-Origin",
 		}),
 	)
-
 	app.Get("/", handlers.LandingHandler)
 	app.Get("/landing", handlers.ViewLanding)
 	app.Post("/command", handlers.HandleCommands)
