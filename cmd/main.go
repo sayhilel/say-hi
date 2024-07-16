@@ -23,6 +23,14 @@ func main() {
 			AllowHeaders: "Access-Control-Allow-Origin",
 		}),
 	)
+	app.Get("/robots.txt", func(c *fiber.Ctx) error {
+		return c.SendFile("./robots.txt")
+	})
+
+	app.Get("/sitemap.xml", func(c *fiber.Ctx) error {
+		return c.SendFile("./sitemap.xml")
+	})
+
 	app.Get("/", handlers.LandingHandler)
 	app.Get("/landing", handlers.ViewLanding)
 	app.Post("/command", handlers.HandleCommands)
