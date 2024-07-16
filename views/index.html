@@ -4,13 +4,28 @@
 <head>
     <title>sayhilel</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale =1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="sayhilel - Your personal website for projects and professional connections.">
+    <meta name="keywords" content="sayhilel, Sahil, Sinha,  LinkedIn, GitHub, portfolio, resume">
+    <meta name="robots" content="index, follow">
     <script src="https://unpkg.com/htmx.org@2.0.0"
         integrity="sha384-wS5l5IKJBvK6sPTKa2WZ1js3d947pvWXbPJ1OmWfEuxLgeHcEbjUUA5i9V5ZkpCw"
         crossorigin="anonymous"></script>
     <link href="css/style.css" rel="stylesheet" />
     <script src="/scripts/nav.js"></script>
-
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://www.sayhilel.com/",
+      "name": "sayhilel",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.sayhilel.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
 </head>
 
 <body>
@@ -33,7 +48,7 @@
             target="_blank"></a>
         <a href="#" title="Toggle Terminal" onclick="toggleTerminal()"></a>
     </footer>
+    <script> listenNav(); dragElement(document.getElementById("terminal"))</script>
 </body>
-<script> listenNav(); dragElement(document.getElementById("terminal"))</script>
 
 </html>
