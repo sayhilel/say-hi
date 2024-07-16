@@ -1,4 +1,2 @@
 User-agent: *
 Disallow: 
-Disallow: /cgi-bin/
-Sitemap: https://www.sayhilel.com/sitemap.xml
