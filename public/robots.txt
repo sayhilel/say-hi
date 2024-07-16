@@ -1,25 +1,4 @@
 User-agent: *
-Disallow: /cmd/
-Disallow: /internal/
-Disallow: /tmp/
-Disallow: /Dockerfile
-Disallow: /go.mod
-Disallow: /go.sum
-
-Allow: /public/css/
-Allow: /public/css/fonts/
-Allow: /public/css/images/
-Allow: /public/scripts/
-Allow: /public/data/
-Allow: /views/
-
-# Routes
-Allow: /whoami
-Allow: /showcase
-Allow: /ping
-Allow: /more
-Allow: /clear
-
-# Sitemap
+Disallow: 
+Disallow: /cgi-bin/
 Sitemap: https://www.sayhilel.com/sitemap.xml
-
