@@ -9,13 +9,12 @@ func GetQuote() map[string]string {
 	agent := fiber.Get("https://api.quotable.io/random?tags=technology|education|Inspirational|Science")
 	_, body, errs := agent.Bytes()
 
-	result := map[string]string{
-		"author":  "Sahil Sinha",
-		"content": "Woopsie",
-	}
+	result := map[string]string{}
 
 	if len(errs) > 0 {
-		return result
+		return map[string]string{
+			"Err": "Unable to Fetch, API might be down?",
+		}
 	}
 
 	json.Unmarshal(body, &result)

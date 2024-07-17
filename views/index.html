@@ -9,11 +9,10 @@
         content="sayhilel - Terminal styled portfolio website for Sahil Sinha made with Go and HTMX">
     <meta name="keywords" content="sayhilel, Sahil, Sinha,  LinkedIn, GitHub, portfolio, resume">
     <meta name="robots" content="index, follow">
-    <script src="https://unpkg.com/htmx.org@2.0.0"
-        integrity="sha384-wS5l5IKJBvK6sPTKa2WZ1js3d947pvWXbPJ1OmWfEuxLgeHcEbjUUA5i9V5ZkpCw"
+    <script src="https://unpkg.com/htmx.org@2.0.1"
+        integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/"
         crossorigin="anonymous"></script>
     <link href="css/style.css" rel="stylesheet" />
-    <script src="/scripts/nav.js"></script>
 </head>
 
 <body>
@@ -28,7 +27,7 @@
             {{template "landing" .}}
         </div>
     </main>
-    <footer class="dock">
+    <footer class="dock" hx-boost="true">
         <a href="https://www.linkedin.com/in/sayhilel/" title="Open LinkedIn" target="_blank"></a>
         <a href="https://github.com/sayhilel" title="Open GitHub" target="_blank"></a>
         <a href="mailto:dev.sahilsinha.com" title="Open Mail" target="_blank"></a>
@@ -36,6 +35,7 @@
             target="_blank"></a>
         <a href="#" title="Toggle Terminal" onclick="toggleTerminal()"></a>
     </footer>
+    <script src="/scripts/nav.js"></script>
     <script> listenNav(); dragElement(document.getElementById("terminal"))</script>
 </body>
 
