@@ -63,5 +63,7 @@ func ViewContactMe(c *fiber.Ctx) error {
 }
 
 func ViewProjects(c *fiber.Ctx) error {
-	return c.Render("layouts/projects", fiber.Map{})
+	return c.Render("layouts/projects", fiber.Map{
+		"shown": "hidden",
+	})
 }

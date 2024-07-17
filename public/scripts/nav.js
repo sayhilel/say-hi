@@ -4,8 +4,8 @@ function listenNav() {
         function(event) {
             // Global
             if (event.ctrlKey && event.key === "c") {
-                htmx.ajax('GET', "landing", '#terminal-window');
                 event.preventDefault();
+                htmx.ajax('GET', "landing", '#terminal-window');
                 return
             }
 

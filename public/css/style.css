@@ -191,8 +191,6 @@ body {
     justify-content: center;
     position: fixed;
     bottom: 0.5vh;
-    width: 14vw;
-    max-width: 800px;
     backdrop-filter: blur(10vh);
     box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
 }
