@@ -25,13 +25,11 @@ function listenNav() {
                     case "ArrowUp":
                         opt[index].classList.remove("highlight");
                         index = (index - 1 + numOpt) % numOpt;
-                        opt[index].classList.add("highlight");
                         event.preventDefault()
                         break;
                     case "ArrowDown":
                         opt[index].classList.remove("highlight");
                         index = (index + 1) % numOpt;
-                        opt[index].classList.add("highlight");
                         event.preventDefault()
                         break;
 
@@ -39,6 +37,7 @@ function listenNav() {
                 if (currIndex !== index) {
                     const url = `/projects/${index}`;
                     htmx.ajax('GET', url, { target: '#project-box' });
+                    opt[index].classList.add("highlight");
                 }
             }
 
