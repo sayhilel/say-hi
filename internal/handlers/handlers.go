@@ -42,13 +42,6 @@ func LandingHandler(c *fiber.Ctx) error {
 		return c.Render("layouts/mobile", fiber.Map{})
 	}
 
-	if strings.Contains(strings.ToLower(userAgent), "firefox") {
-		return c.Render("index", fiber.Map{
-			"content": "FIREFOX DETECTED. Please use google chrome for best pefomance",
-			"author":  "currently, due to an issue, firefox is much slower than google chrome",
-		})
-	}
-
 	return c.Render("index", fiber.Map{
 		"content": "Use (C-c) to refresh this page for a random quote.",
 		"author":  "Sahil Sinha",
