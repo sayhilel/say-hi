@@ -1,0 +1,11 @@
+{{block "project" .}}
+<section class="project">
+    <a href={{.Url}}>
+        <h2>🔗{{.Name}}</h2>
+    </a>
+    <p style="color: {{.Accent}}"> {{.Technologies}} </p><br>
+    <p>{{.Description}}</p>
+    <pre style="color: {{.Accent}};">{{.Ascii}}</pre>
+</section>
+
+{{end}}

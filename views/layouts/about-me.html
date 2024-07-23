@@ -1,49 +1,9 @@
-{{block "about-me" .}}
-<p> [Use (C-c) to return. You can also start typing to focus on prompt] </p>
-<h2> Whoami: About-Me </h2>
-
-<section class="aboutme">
-    <p>Hey viewer, my name is
-    <h4>Sahil</h4>. I am a Junior at Arizona State University. I am currently a Teaching Assistant for ASU's CSE-240:
-    Principles of Programming, which is the first programming class introducing fundamental CS concepts such as terminal
-    usage, memory management, and programming paradigms.</p>
-
-    <h3>Interests and Skills</h3>
-    <p>My interests include all things
-    <h4>*NIX</h4>. I have been daily driving <h4>Arch Linux</h4> for almost 2 years. I also enjoy systems-level
-    languages such as <h4>C, C++, Rust, and Go.</h4> I believe that while abstraction in programming languages is a
-    powerful
-    tool, it is often overused where there is no need. This belief guided me to use a very minimal tech stack when
-    building this website.</p>
-
-    <h3>Academic and Professional Experience</h3>
-    <p>At ASU, I have worked as part of ASU Automation Projects' student led team, specifically on
-    <h4>Attendance Management System or AMS</h4>, which is an automated attendance system integrated using ASU's card
-    scanners and Canvas LMS</p>
-
-    <h3>Personal Projects</h3>
-    <p>I have worked on a few projects on my free time. You can view all of them by either clicking on the
-    <h4>Github</h4> button on the dock or by using <h4>"showcase" command.</h4>
-    </p>
-
-    <h3>Contact</h3>
-    <p>If you’d like to get in touch, feel free to reach me at my email or linkedin by clicking the
-    <h4>Gmail</h4> or <h4>Linkedin</h4> button on the dock. You can also use <h4>"ping" command </h4>
-    </p>
-
-    <h3>Resume</h3>
-    <p> You can view my resume by clicking
-    <h4>Resume</h4> button on the dock. You can also use <h4>"more" command </h4>
-    </p>
-
-
-
-    <h3>Future Goals</h3>
-    <p>In the next few years, I aim to learn more while creating software I love.</p>
-
-    <h3>My Dog</h3>
-    <p>This is my dog Laddoo:</p><br>
-    <img src="/css/images/laddoo.png"></img>
-</section>
-{{template "prompt" .}}
+{{block "about-me" .}}<p>[Use (C-c) to return. You can also start typing to focus on prompt]<h2>Whoami: About-Me</h2><section class=aboutme><p>Hey viewer, my name is<h4>Sahil</h4>. I am a Junior at Arizona State University. I am currently a Teaching Assistant for ASU's CSE-240:
+Principles of Programming, which is the first programming class introducing fundamental CS concepts such as terminal
+usage, memory management, and programming paradigms.<h3>Interests and Skills</h3><p>My interests include all things<h4>*NIX</h4>. I have been daily driving<h4>Arch Linux</h4>for almost 2 years. I also enjoy systems-level
+languages such as<h4>C, C++, Rust, and Go.</h4>I believe that while abstraction in programming languages is a
+powerful
+tool, it is often overused where there is no need. This belief guided me to use a very minimal tech stack when
+building this website.<h3>Academic and Professional Experience</h3><p>At ASU, I have worked as part of ASU Automation Projects' student led team, specifically on<h4>Attendance Management System or AMS</h4>, which is an automated attendance system integrated using ASU's card
+scanners and Canvas LMS<h3>Personal Projects</h3><p>I have worked on a few projects on my free time. You can view all of them by either clicking on the<h4>Github</h4>button on the dock or by using<h4>"showcase" command.</h4><h3>Contact</h3><p>If you’d like to get in touch, feel free to reach me at my email or linkedin by clicking the<h4>Gmail</h4>or<h4>Linkedin</h4>button on the dock. You can also use<h4>"ping" command</h4><h3>Resume</h3><p>You can view my resume by clicking<h4>Resume</h4>button on the dock. You can also use<h4>"more" command</h4><h3>Future Goals</h3><p>In the next few years, I aim to learn more while creating software I love.<h3>My Dog</h3><p>This is my dog Laddoo:</p><br><img src=/css/images/laddoo.png></img></section>{{template "prompt" .}}
 {{end}}
