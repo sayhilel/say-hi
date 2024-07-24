@@ -1,5 +1,23 @@
-{{block "landing" .}}<h2>Landing: Welcome</h2><p>{{.content}}<br>-{{.author}}<section class=landing><p><h4>ROOT:Sahil Sinha</h4><ul><h3>Use one of the following command to navigate around this enviroment:</h3>(Use (↑↓) to scrolls all known commands)<li><h4>whoami</h4>Displays a brief about-me page for the root user.<li><h4>showcase</h4>Opens an interactive prompt showcasing different projects developed by the root
-user.<li><h4>ping</h4>Opens a TUI form to contact the root user.<li><h4>more</h4>Shows more info about root user by opening root/resume.<li><h4>clear</h4>Clears terminal.</ul><pre style=color:var(--nav)>
+{{block "landing" .}}<h2>Landing: Welcome</h2>
+<p>{{.content}}<br>-{{.author}}
+<section class=landing>
+    <p>
+    <h4>ROOT:Sahil Sinha</h4>
+    <ul>
+        <h3>Use one of the following command to navigate around this enviroment:</h3>(Use (↑↓) to scrolls all known
+        commands)<li>
+            <h4>whoami</h4>Displays a brief about-me page for the root user.
+        <li>
+            <h4>showcase</h4>Opens an interactive prompt showcasing different projects developed by the root
+            user.
+        <li>
+            <h4>ping</h4>Opens a TUI form to contact the root user.
+        <li>
+            <h4>more</h4>Shows more info about root user by opening root/resume.
+        <li>
+            <h4>clear</h4>Clears terminal.
+    </ul>
+    <pre style=color:var(--nav)>
         ⠀⠀⠀⢸⣦⡀⠀⠀⠀⠀⢀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
         ⠀⠀⠀⢸⣏⠻⣶⣤⡶⢾⡿⠁⠀⢠⣄⡀⢀⣴⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
         ⠀⠀⣀⣼⠷⠀⠀⠁⢀⣿⠃⠀⠀⢀⣿⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -13,6 +31,8 @@ user.<li><h4>ping</h4>Opens a TUI form to contact the root user.<li><h4>more</h4
         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠋⠀⠀⣰⣿⣿⣾⣿⠿⢿⣷⣀⢀⣿⡇⠁⠀⠀⠀⠀⠀
         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠋⠉⠁⠀⠀⠀⠀⠙⢿⣿⣿⠇⠀⠀⠀⠀⠀⠀
         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⠀⠀⠀⠀⠀⠀⠀
-    </pre></section><p>Coming Soon! : Contact-Me Update(ping)</p>⠀
+    </pre>
+</section>
+<p>You can also drag and move this window.</p>⠀
 {{template "prompt" .}}
 {{end}}

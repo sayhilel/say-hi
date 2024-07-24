@@ -1,3 +1,27 @@
-<!doctype html><html lang=en><title>sayhilel</title>
-<meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="sayhilel - Terminal styled portfolio website for Sahil Sinha made with Go and HTMX"><meta name=keywords content="sayhilel,Sahil,Sinha, LinkedIn,GitHub,portfolio,resume"><meta name=robots content="index, follow"><script src=https://unpkg.com/htmx.org@2.0.1 integrity=sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/ crossorigin=anonymous></script><link href=css/style.css rel=stylesheet><main class=terminal id=terminal><div class=terminal-decorations id=terminal-decorations><span class=dot onclick=toggleTerminal()></span><span class=dot onclick=toggleTerminal()></span>
-<span class=dot onclick=toggleTerminal()></span></div><div class=terminal-window id=terminal-window><p>[COLD RUN] Initializing.... New session for viewer</p>{{template "landing" .}}</div></main><footer class=dock hx-boost=true><a href=https://www.linkedin.com/in/sayhilel/ title="Open LinkedIn" target=_blank></a><a href=https://github.com/sayhilel title="Open GitHub" target=_blank></a><a href=mailto:dev.sahilsinha.com title="Open Mail" target=_blank></a><a href=https://github.com/sayhilel/resume/blob/main/pub/resume_pub.pdf title="Open Resume" target=_blank></a><a href=# title="Toggle Terminal" onclick=toggleTerminal()></a></footer><script src=/scripts/nav.js></script><script>listenNav(),dragElement(document.getElementById("terminal"))</script>
+<!doctype html>
+<html lang=en>
+<title>sayhilel</title>
+<meta charset=UTF-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="sayhilel - Terminal styled portfolio website for Sahil Sinha made with Go and HTMX">
+<meta name=keywords content="sayhilel,Sahil,Sinha, LinkedIn,GitHub,portfolio,resume">
+<meta name=robots content="index, follow">
+<script src=https://unpkg.com/htmx.org@2.0.1
+    integrity=sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/ crossorigin=anonymous></script>
+<link href=css/style.css rel=stylesheet>
+<main class=terminal id=terminal>
+    <div class=terminal-decorations id=terminal-decorations><span class=dot onclick=toggleTerminal()></span><span
+            class=dot onclick=toggleTerminal()></span>
+        <span class=dot onclick=toggleTerminal()></span>
+    </div>
+    <div class=terminal-window id=terminal-window>
+        <p>[COLD RUN] Initializing.... New session for viewer</p>{{template "landing" .}}
+    </div>
+</main>
+<footer class=dock hx-boost=true><a href=https://www.linkedin.com/in/sayhilel/ title="Open LinkedIn"
+        target=_blank></a><a href=https://github.com/sayhilel title="Open GitHub" target=_blank></a><a
+        href=mailto:dev.sahilsinha.com title="Open Mail" target=_blank></a><a
+        href=https://github.com/sayhilel/resume/blob/main/pub/resume_pub.pdf title="Open Resume" target=_blank></a><a
+        href=# title="Toggle Terminal" onclick=toggleTerminal()></a></footer>
+<script src=/scripts/nav.js></script>
+<script>listenNav(), dragElement(document.getElementById("terminal"))</script>

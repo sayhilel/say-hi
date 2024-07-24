@@ -11,6 +11,8 @@ func HandleCommands(c *fiber.Ctx) error {
 
 	default:
 		return HandleInvalid(c)
+	case "sudo":
+		return secretUser(c)
 	case "whoami":
 		return ViewAboutMe(c)
 	case "showcase":
@@ -22,6 +24,11 @@ func HandleCommands(c *fiber.Ctx) error {
 	case "clear":
 		return ClearField(c)
 	}
+}
+
+// get pwned lol
+func secretUser(c *fiber.Ctx) error {
+	return c.Render("layouts/secret", fiber.Map{})
 }
 
 func ClearField(c *fiber.Ctx) error {
