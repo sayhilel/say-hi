@@ -1,1 +1,211 @@
-:root{--terminal:#0F1014;--accents:#79C0FF;--nav:#3A9784}@font-face{font-family:Iosevka-Term;src:url(./fonts/iosevka-term-extendedmedium.ttf)}*{font-family:Iosevka-Term}.highlight{background-color:#fff}h1,h2,h3{color:var(--accents)}h4{color:var(--nav);display:inline}a{text-decoration:none}p{display:inline}body{overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;background:url(images/starry.png);background-size:cover;background-repeat:no-repeat;height:100vh;transition:background-image .3s ease-in-out}.terminal{position:absolute;background-color:var(--terminal);border-radius:.75rem;box-shadow:0 0 20px rgba(0,0,0,.5);width:80vw;max-width:1e3px;height:80vh;max-height:1e3px;display:flex;flex-direction:column}.terminal-decorations{background-color:#0a0c10;padding:10px;display:flex;justify-content:flex-start;border-top-left-radius:10px;border-top-right-radius:10px}.terminal-decorations:hover{cursor:grab}.terminal-decorations span:hover{cursor:pointer}.dot{height:12px;width:12px;margin:0 5px;border-radius:50%;display:inline-block}.dot:first-child{background-color:var(--accents)}.dot:nth-child(2){background-color:var(--nav)}.dot:nth-child(3){background-color:#b6a67a}.terminal-window{color:#dcdcdc;padding:20px;flex-grow:1;overflow-y:auto;line-height:1.5;font-size:1rem}.prompt{display:flex;color:var(--nav)}.prompt::before{content:"viewer@say-hi ❯";margin-right:10px;color:var(--nav)}.prompt input{flex:1;border:none;color:var(--nav);background:0 0;outline:none}.aboutme img{width:300px;border-radius:.75rem;height:200px}.landing{display:flex}.projects{display:flex;flex-direction:row}.projects ul{width:20vw}.project-box{width:80vw;max-width:800px;padding:2.5rem;border:.1rem solid #333;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,.5)}.contact a{color:#757d39}.dialog{display:flex;flex-direction:column;width:40vw;height:30vh;margin-top:auto;margin-left:auto;margin-right:auto;padding:2rem;border:.1rem solid #333;border-radius:.75rem;box-shadow:0 0 10px rgba(0,0,0,.5)}.dock{border-radius:10px;display:flex;justify-content:center;position:fixed;bottom:.5vh;backdrop-filter:blur(10vh);box-shadow:0 -5px 15px rgba(0,0,0,.5)}.dock a{height:2.5rem;width:2.5rem;background-size:cover;background-repeat:no-repeat}.dock a:first-child{background-image:url(images/linkedin.svg)}.dock a:nth-child(2){background-image:url(images/github.svg)}.dock a:nth-child(3){background-image:url(images/gmail.svg)}.dock a:nth-child(4){background-image:url(images/resume.svg)}.dock a:nth-child(5){background-image:url(images/terminal.svg)}
+:root {
+  --terminal: #0F1014;
+  --accents: #79C0FF;
+  --nav: #3A9784
+}
+
+@font-face {
+  font-family: Iosevka-Term;
+  src: url(./fonts/iosevka-term-extendedmedium.ttf)
+}
+
+* {
+  font-family: Iosevka-Term
+}
+
+.highlight {
+  background-color: #fff
+}
+
+h1,
+h2,
+h3 {
+  color: var(--accents)
+}
+
+h4 {
+  color: var(--nav);
+  display: inline
+}
+
+a {
+  text-decoration: none
+}
+
+p {
+  display: inline
+}
+
+body {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url(images/starry.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  transition: background-image .3s ease-in-out
+}
+
+.terminal {
+  position: absolute;
+  background-color: var(--terminal);
+  border-radius: .75rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .5);
+  width: 80vw;
+  max-width: 1e3px;
+  height: 80vh;
+  max-height: 1e3px;
+  display: flex;
+  flex-direction: column
+}
+
+.terminal-decorations {
+  background-color: #0a0c10;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px
+}
+
+.*-decorations:hover {
+  cursor: grab
+}
+
+.terminal-decorations span:hover {
+  cursor: pointer
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  border-radius: 50%;
+  display: inline-block
+}
+
+.dot:first-child {
+  background-color: var(--accents)
+}
+
+.dot:nth-child(2) {
+  background-color: var(--nav)
+}
+
+.dot:nth-child(3) {
+  background-color: #b6a67a
+}
+
+.terminal-window {
+  color: #dcdcdc;
+  padding: 20px;
+  flex-grow: 1;
+  overflow-y: auto;
+  line-height: 1.5;
+  font-size: 1rem
+}
+
+.prompt {
+  display: flex;
+  color: var(--nav)
+}
+
+.prompt::before {
+  content: "viewer@say-hi ❯";
+  margin-right: 10px;
+  color: var(--nav)
+}
+
+.prompt input {
+  flex: 1;
+  border: none;
+  color: var(--nav);
+  background: 0 0;
+  outline: none
+}
+
+.aboutme img {
+  width: 300px;
+  border-radius: .75rem;
+  height: 200px
+}
+
+.landing {
+  display: flex
+}
+
+.projects {
+  display: flex;
+  flex-direction: row
+}
+
+.projects ul {
+  width: 20vw
+}
+
+.project-box {
+  width: 80vw;
+  max-width: 800px;
+  padding: 2.5rem;
+  border: .1rem solid #333;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .5)
+}
+
+.contact a {
+  color: #757d39
+}
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  height: 30vh;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem;
+  border: .1rem solid #333;
+  border-radius: .75rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .5)
+}
+
+.dock {
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: .5vh;
+  backdrop-filter: blur(10vh);
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, .5)
+}
+
+.dock a {
+  height: 2.5rem;
+  width: 2.5rem;
+  background-size: cover;
+  background-repeat: no-repeat
+}
+
+.dock a:first-child {
+  background-image: url(images/linkedin.svg)
+}
+
+.dock a:nth-child(2) {
+  background-image: url(images/github.svg)
+}
+
+.dock a:nth-child(3) {
+  background-image: url(images/gmail.svg)
+}
+
+.dock a:nth-child(4) {
+  background-image: url(images/resume.svg)
+}
+
+.dock a:nth-child(5) {
+  background-image: url(images/terminal.svg)
+}
