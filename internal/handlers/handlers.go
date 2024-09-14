@@ -1,9 +1,11 @@
 package handlers
 
 import (
+	"fmt"
+	"strings"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/sayhilel/say-hi/internal/quotes"
-	"strings"
 )
 
 func HandleCommands(c *fiber.Ctx) error {
@@ -50,8 +52,8 @@ func LandingHandler(c *fiber.Ctx) error {
 	}
 
 	return c.Render("index", fiber.Map{
-		"content": "Use (C-c) to refresh this page for a random quote.",
-		"author":  "Sahil Sinha",
+		"q": "Use (C-c) to refresh this page for a random quote.",
+		"a": "Sahil Sinha",
 	})
 }
 
