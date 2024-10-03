@@ -1,0 +1,2 @@
+web: cmd/main.go
+
