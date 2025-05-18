@@ -1,2 +1,11 @@
-{{block "prompt" .}}<div class=prompt><input name=command id=command list=allcommands hx-boost=true hx-post=/command hx-target=#terminal-window autofocus autocomplete=off>
-<datalist id=allcommands><option value=whoami><option value=showcase><option value=ping><option value=more><option value=clear></datalist></div>{{end}}
+{{block "prompt" .}}<div class=prompt><input name=command id=command list=allcommands hx-boost=true hx-post=/command
+    hx-target=#terminal-window autofocus autocomplete=off>
+  <datalist id=allcommands>
+    <option value=whoami>
+    <option value=showcase>
+    <option value=ping>
+    <option value=exp>
+    <option value=more>
+    <option value=clear>
+  </datalist>
+</div>{{end}}

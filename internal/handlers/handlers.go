@@ -16,6 +16,8 @@ func HandleCommands(c *fiber.Ctx) error {
 		return secretUser(c)
 	case "whoami":
 		return ViewAboutMe(c)
+	case "exp":
+		return ViewExperience(c)
 	case "showcase":
 		return ViewProjects(c)
 	case "ping":
@@ -64,6 +66,10 @@ func OpenConfirmation(c *fiber.Ctx) error {
 
 func ViewAboutMe(c *fiber.Ctx) error {
 	return c.Render("layouts/about-me", fiber.Map{})
+}
+
+func ViewExperience(c *fiber.Ctx) error {
+	return c.Render("layouts/exp", fiber.Map{})
 }
 
 func ViewContactMe(c *fiber.Ctx) error {
