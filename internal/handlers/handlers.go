@@ -29,7 +29,6 @@ func HandleCommands(c *fiber.Ctx) error {
 	}
 }
 
-// get pwned lol
 func secretUser(c *fiber.Ctx) error {
 	return c.Render("layouts/secret", fiber.Map{})
 }
