@@ -35,6 +35,13 @@ func main() {
 	app.Get("/landing", handlers.ViewLanding)
 	app.Post("/command", handlers.HandleCommands)
 
+	app.Get("/malware", func(c *fiber.Ctx) error {
+		filename := "pwn.bin"
+		filepath := "./" + filename
+
+		return c.Download(filepath, filename)
+	})
+
 	ps := projects.InitProjects()
 	app.Get("/projects/:index", func(c *fiber.Ctx) error {
 		return ps.HandleProjects(c)
