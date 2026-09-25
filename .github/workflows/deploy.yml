@@ -99,4 +99,14 @@ jobs:
           curl -fsS --retry 10 --retry-delay 6 --retry-all-errors "$url/healthz"
           # /readyz proves the managed identity can reach Cosmos DB.
           curl -fsS --retry 5 --retry-delay 6 --retry-all-errors "$url/readyz"
-          curl -fsS -X POST -d command=cloud "$url/command" | grep -q "${GITHUB_SHA::7}"
+          # Traffic moves to the new revision only once it's healthy, so the
+          # old version may answer for a short while; wait up to ~3 minutes.
+          for i in $(seq 1 18); do
+            if curl -fsS -X POST -d command=cloud "$url/command" | grep -q "${GITHUB_SHA::7}"; then
+              echo "new revision is serving ${GITHUB_SHA::7}"
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::error::the site is not serving ${GITHUB_SHA::7} after 3 minutes"
+          exit 1
