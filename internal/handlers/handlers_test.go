@@ -68,7 +68,7 @@ func TestLandingCountsVisitorOnce(t *testing.T) {
 		t.Fatal(err)
 	}
 	body, _ := io.ReadAll(resp.Body)
-	if !strings.Contains(string(body), "viewer #1") {
+	if !strings.Contains(string(body), ">#1</span>") {
 		t.Fatalf("first visit not counted: %s", body)
 	}
 
@@ -81,7 +81,7 @@ func TestLandingCountsVisitorOnce(t *testing.T) {
 		t.Fatal(err)
 	}
 	body, _ = io.ReadAll(resp.Body)
-	if strings.Contains(string(body), "viewer #") {
+	if strings.Contains(string(body), "#1</span>") {
 		t.Fatalf("returning visitor counted again")
 	}
 }

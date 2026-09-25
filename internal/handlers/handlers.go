@@ -63,7 +63,11 @@ func HandleInvalid(c *fiber.Ctx) error {
 }
 
 func ViewLanding(c *fiber.Ctx) error {
-	return c.Render("layouts/landing", quote.GetQuote())
+	data := fiber.Map{"Info": runtimeinfo.Current()}
+	for k, v := range quote.GetQuote() {
+		data[k] = v
+	}
+	return c.Render("layouts/landing", data)
 }
 
 func (h *Handler) LandingHandler(c *fiber.Ctx) error {
@@ -73,9 +77,8 @@ func (h *Handler) LandingHandler(c *fiber.Ctx) error {
 	}
 
 	return c.Render("index", fiber.Map{
-		"q":       "Use (C-c) to refresh this page for a random quote.",
-		"a":       "Sahil Sinha",
 		"visitor": h.countVisitor(c),
+		"Info":    runtimeinfo.Current(),
 	})
 }
 

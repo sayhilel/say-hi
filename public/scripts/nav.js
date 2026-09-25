@@ -37,7 +37,7 @@ function listenNav() {
       switch (t.key) {
         case "y":
           (window.open(
-            document.querySelector('.dock a[title="Open Resume"]').href,
+            document.querySelector('.dock a[title="Resume"]').href,
             "_blank",
           ),
             htmx.ajax("GET", "landing", "#terminal-window"));
@@ -77,4 +77,17 @@ function dragElement(e) {
 function toggleTerminal() {
   var e = document.getElementById("terminal");
   e.style.display = e.style.display == "none" ? "flex" : "none";
+}
+function startClock() {
+  const e = document.getElementById("clock");
+  if (!e) return;
+  const tick = () =>
+    (e.textContent = new Date().toLocaleString([], {
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+    }));
+  (tick(), setInterval(tick, 15e3));
 }

@@ -1,43 +1,47 @@
-{{block "landing" .}}<h2>Landing: Welcome</h2>
-<p>{{.q}}<br>-{{.a}}
+{{block "landing" .}}{{if .q}}<p class=quote>“{{.q}}” <span class=muted>— {{.a}}</span></p>{{end}}
 <section class=landing>
-  <p>
-  <h4>ROOT:Sahil Sinha</h4>
-  <ul>
-    <h3>Use one of the following command to navigate around this enviroment:</h3>(Use (↑↓) to scrolls all known
-    commands)<li>
-      <h4>whoami</h4> Displays a brief about-me page for the root user.
-    <li>
-      <h4>showcase</h4> Opens an interactive prompt showcasing different projects developed by the root
-      user.
-    <li>
-    <li>
-      <h4>exp</h4> Shows my professional experience.
-    <li>
-      <h4>ping</h4> Opens a TUI form to contact the root user.
-    <li>
-      <h4>cloud</h4> Shows how this site is deployed on Azure, with live runtime details.
-    <li>
-      <h4>more</h4> Shows more info about root user by opening root/resume.
-    <li>
-      <h4>clear</h4> Clears terminal.
-  </ul>
-  <pre style=color:var(--nav)>
-    ⠀⠀⠀⢸⣦⡀⠀⠀⠀⠀⢀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⢸⣏⠻⣶⣤⡶⢾⡿⠁⠀⢠⣄⡀⢀⣴⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⣀⣼⠷⠀⠀⠁⢀⣿⠃⠀⠀⢀⣿⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    ⠴⣾⣯⣅⣀⠀⠀⠀⠈⢻⣦⡀⠒⠻⠿⣿⡿⠿⠓⠂⠀⠀⢀⡇⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠉⢻⡇⣤⣾⣿⣷⣿⣿⣤⠀⠀⣿⠁⠀⠀⠀⢀⣴⣿⣿⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠀⠸⣿⡿⠏⠀⢀⠀⠀⠿⣶⣤⣤⣤⣄⣀⣴⣿⡿⢻⣿⡆⠀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠀⠀⠟⠁⠀⢀⣼⠀⠀⠀⠹⣿⣟⠿⠿⠿⡿⠋⠀⠘⣿⣇⠀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠀⠀⢳⣶⣶⣿⣿⣇⣀⠀⠀⠙⣿⣆⠀⠀⠀⠀⠀⠀⠛⠿⣿⣦⣤⣀⠀⠀
-    ⠀⠀⠀⠀⠀⠀⣹⣿⣿⣿⣿⠿⠋⠁⠀⣹⣿⠳⠀⠀⠀⠀⠀⠀⢀⣠⣽⣿⡿⠟⠃
-    ⠀⠀⠀⠀⠀⢰⠿⠛⠻⢿⡇⠀⠀⠀⣰⣿⠏⠀⠀⢀⠀⠀⠀⣾⣿⠟⠋⠁⠀⠀⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠋⠀⠀⣰⣿⣿⣾⣿⠿⢿⣷⣀⢀⣿⡇⠁⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠋⠉⠁⠀⠀⠀⠀⠙⢿⣿⣿⠇⠀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⠀⠀⠀⠀⠀⠀⠀
-  </pre>
+<pre class=logo aria-hidden=true>
+⠀⠀⠀⢸⣦⡀⠀⠀⠀⠀⢀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⢸⣏⠻⣶⣤⡶⢾⡿⠁⠀⢠⣄⡀⢀⣴⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⣀⣼⠷⠀⠀⠁⢀⣿⠃⠀⠀⢀⣿⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠴⣾⣯⣅⣀⠀⠀⠀⠈⢻⣦⡀⠒⠻⠿⣿⡿⠿⠓⠂⠀⠀⢀⡇⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠉⢻⡇⣤⣾⣿⣷⣿⣿⣤⠀⠀⣿⠁⠀⠀⠀⢀⣴⣿⣿⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠸⣿⡿⠏⠀⢀⠀⠀⠿⣶⣤⣤⣤⣄⣀⣴⣿⡿⢻⣿⡆⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠟⠁⠀⢀⣼⠀⠀⠀⠹⣿⣟⠿⠿⠿⡿⠋⠀⠘⣿⣇⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢳⣶⣶⣿⣿⣇⣀⠀⠀⠙⣿⣆⠀⠀⠀⠀⠀⠀⠛⠿⣿⣦⣤⣀⠀⠀
+⠀⠀⠀⠀⠀⠀⣹⣿⣿⣿⣿⠿⠋⠁⠀⣹⣿⠳⠀⠀⠀⠀⠀⠀⢀⣠⣽⣿⡿⠟⠃
+⠀⠀⠀⠀⠀⢰⠿⠛⠻⢿⡇⠀⠀⠀⣰⣿⠏⠀⠀⢀⠀⠀⠀⣾⣿⠟⠋⠁⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠋⠀⠀⣰⣿⣿⣾⣿⠿⢿⣷⣀⢀⣿⡇⠁⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠋⠉⠁⠀⠀⠀⠀⠙⢿⣿⣿⠇⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⠀⠀⠀⠀⠀⠀⠀
+</pre>
+  <div class=fetch>
+    <p class=fetch-title><span class=accent>sahil</span>@<span class=accent>say-hi</span></p>
+    <p class=muted>-------------------------</p>
+    <dl>
+      <dt>Name</dt><dd>Sahil Sinha</dd>
+      <dt>Role</dt><dd>Software Developer</dd>
+      <dt>Location</dt><dd>Richmond, VA</dd>
+      <dt>Education</dt><dd>Arizona State University</dd>
+      <dt>Languages</dt><dd>Go, Rust, C, C++, Python</dd>
+      <dt>OS</dt><dd>Arch Linux (btw)</dd>
+      <dt>Cloud</dt><dd>Azure Container Apps · Cosmos DB · Bicep</dd>
+      {{with .Info}}<dt>Host</dt><dd>{{.Platform}}{{if ne .Region "n/a"}} ({{.Region}}){{end}}</dd>
+      <dt>Uptime</dt><dd>{{.Uptime}}</dd>{{end}}
+    </dl>
+    <p class=swatches aria-hidden=true><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></p>
+  </div>
 </section>
-<p>You can also drag and move this window.</p>⠀
+<h3>Available commands</h3>
+<p class=muted>Type or click a command. (C-c) brings you back here; drag the title bar to move the window.</p>
+<dl class=commands>
+  <dt>{{template "runcmd" "whoami"}}</dt><dd>A short about-me page.</dd>
+  <dt>{{template "runcmd" "exp"}}</dt><dd>Professional experience.</dd>
+  <dt>{{template "runcmd" "showcase"}}</dt><dd>Interactive tour of my projects.</dd>
+  <dt>{{template "runcmd" "cloud"}}</dt><dd>How this site runs on Azure, with live runtime details.</dd>
+  <dt>{{template "runcmd" "ping"}}</dt><dd>Send me a message.</dd>
+  <dt>{{template "runcmd" "more"}}</dt><dd>Open my resume.</dd>
+  <dt>{{template "runcmd" "clear"}}</dt><dd>Clear the terminal.</dd>
+</dl>
 {{template "prompt" .}}
 {{end}}

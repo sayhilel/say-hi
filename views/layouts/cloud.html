@@ -1,32 +1,32 @@
-{{block "cloud" .}}<p>[Use (C-c) to return. You can also start typing to focus on prompt]</p>
+{{block "cloud" .}}<p class=muted>[Use (C-c) to return. You can also start typing to focus on prompt]</p>
 <h2>cloud: How this site runs</h2>
 <section class=cloud>
 <pre>
-  viewer ──HTTPS──▶ Azure Container Apps (Envoy ingress, managed TLS)
-                        │   scale 0 → 1 replica, consumption plan
-                        ▼
+  viewer ──HTTPS──> Azure Container Apps (Envoy ingress, managed TLS)
+                        │   scale 0 -> 1 replica, consumption plan
+                        v
                   say-hi container (Go/Fiber, distroless, non-root)
                    │                 │
    managed identity│                 │ stdout (JSON logs)
-     (no secrets)  ▼                 ▼
-          Cosmos DB for NoSQL     Log Analytics ──▶ Azure Workbook
+     (no secrets)  v                 v
+          Cosmos DB for NoSQL     Log Analytics ──> Azure Workbook
           contact msgs + counter  (KQL)
 
-  GitHub Actions ──OIDC──▶ Entra ID ──▶ Bicep deployment ──▶ new revision
-         └── build ──▶ ghcr.io image (tagged with commit SHA)
+  GitHub Actions ──OIDC──> Entra ID ──> Bicep deployment ──> new revision
+         └── build ──> ghcr.io image (tagged with commit SHA)
 </pre>
 <h3>Live runtime</h3>
-<ul>
-  <li><h4>platform</h4> {{.Info.Platform}}
-  <li><h4>app</h4> {{.Info.App}}
-  <li><h4>region</h4> {{.Info.Region}}
-  <li><h4>revision</h4> {{.Info.Revision}}
-  <li><h4>replica</h4> {{.Info.Replica}}
-  <li><h4>version</h4> {{.Info.Version}}
-  <li><h4>replica started</h4> {{.Info.Started}} (up {{.Info.Uptime}}, {{.Info.Requests}} requests served)
-  <li><h4>data store</h4> {{.Backend}}: {{.StoreStatus}}
-</ul>
+<dl class=kv>
+  <dt>platform</dt><dd>{{.Info.Platform}}</dd>
+  <dt>app</dt><dd>{{.Info.App}}</dd>
+  <dt>region</dt><dd>{{.Info.Region}}</dd>
+  <dt>revision</dt><dd>{{.Info.Revision}}</dd>
+  <dt>replica</dt><dd>{{.Info.Replica}}</dd>
+  <dt>version</dt><dd>{{.Info.Version}}</dd>
+  <dt>started</dt><dd>{{.Info.Started}} <span class=muted>(up {{.Info.Uptime}}, {{.Info.Requests}} requests served)</span></dd>
+  <dt>data store</dt><dd>{{.Backend}}: <span class={{if eq .StoreStatus "connected"}}ok{{else}}error{{end}}>{{.StoreStatus}}</span></dd>
+</dl>
 <p>This replica scales to zero when idle. If the uptime above is only a few seconds, your visit just cold-started it.<br>
-Full write-up of every service used: <a href=https://github.com/sayhilel/say-hi/tree/main/docs target=_blank>github.com/sayhilel/say-hi/docs</a></p>
+Full write-up of every service used: <a href=https://github.com/sayhilel/say-hi/tree/main/docs target=_blank rel=noopener>github.com/sayhilel/say-hi/docs</a></p>
 </section>{{template "prompt" .}}
 {{end}}

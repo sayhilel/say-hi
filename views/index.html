@@ -1,60 +1,93 @@
 <!doctype html>
 <html lang="en">
-  <title>sayhilel</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta
-    name="description"
-    content="sayhilel - Terminal styled portfolio website for Sahil Sinha made with Go and HTMX"
-  />
-  <meta
-    name="keywords"
-    content="sayhilel,Sahil,Sinha, LinkedIn,GitHub,portfolio,resume"
-  />
-  <meta name="robots" content="index, follow" />
-  <script
-    src="https://unpkg.com/htmx.org@2.0.1"
-    integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/"
-    crossorigin="anonymous"
-  ></script>
-  <link href="css/style.css" rel="stylesheet" />
+  <head>
+    <title>sayhilel</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="sayhilel - Terminal styled portfolio website for Sahil Sinha made with Go and HTMX, running on Azure"
+    />
+    <meta
+      name="keywords"
+      content="sayhilel,Sahil,Sinha, LinkedIn,GitHub,portfolio,resume,Azure"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0f1014" />
+    <link
+      rel="preload"
+      href="/css/fonts/iosevka-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <script
+      src="https://unpkg.com/htmx.org@2.0.1"
+      integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/"
+      crossorigin="anonymous"
+    ></script>
+    <link href="/css/style.css" rel="stylesheet" />
+  </head>
 
   <body>
+    <header class="menubar">
+      <nav>
+        <span class="menubar-brand">◆ say-hi</span>
+        {{template "runcmd" "whoami"}}
+        {{template "runcmd" "exp"}}
+        {{template "runcmd" "showcase"}}
+        {{template "runcmd" "cloud"}}
+        {{template "runcmd" "ping"}}
+      </nav>
+      <span class="menubar-clock" id="clock"></span>
+    </header>
+
     <main class="terminal" id="terminal">
       <div class="terminal-decorations" id="terminal-decorations">
-        <span class="dot" onclick="toggleTerminal()"></span>
-        <span class="dot" onclick="toggleTerminal()"></span>
-        <span class="dot" onclick="toggleTerminal()"></span>
+        <span class="dot" onclick="toggleTerminal()" title="Close"></span>
+        <span class="dot" onclick="toggleTerminal()" title="Minimise"></span>
+        <span class="dot" title="Zoom"></span>
+        <span class="terminal-title">viewer@say-hi: ~</span>
       </div>
       <div class="terminal-window" id="terminal-window">
-        <p>[COLD RUN] Initializing.... New session for viewer{{if .visitor}} #{{.visitor}}{{end}}</p>
+        <p class="boot">
+          <span class="muted">[cold start]</span> Initializing... new session
+          for viewer{{if .visitor}}
+          <span class="accent">#{{.visitor}}</span>{{end}}
+        </p>
         {{template "landing" .}}
       </div>
     </main>
+
+    <footer class="dock">
+      <a
+        href="https://www.linkedin.com/in/sayhilel/"
+        title="LinkedIn"
+        target="_blank"
+        rel="noopener"
+      ></a>
+      <a
+        href="https://github.com/sayhilel"
+        title="GitHub"
+        target="_blank"
+        rel="noopener"
+      ></a>
+      <a href="mailto:dev.sahilsinha@gmail.com" title="Mail"></a>
+      <a
+        href="https://github.com/sayhilel/resume-pub/blob/main/pub/Sahil_Sinha_Resume_Pub.pdf"
+        title="Resume"
+        target="_blank"
+        rel="noopener"
+      ></a>
+      <span class="dock-divider"></span>
+      <a href="#" title="Terminal" onclick="toggleTerminal()"></a>
+    </footer>
+
+    <script src="/scripts/nav.js"></script>
+    <script>
+      (listenNav(), dragElement(document.getElementById("terminal")), startClock());
+      // The prompt's autofocus scrolls to the bottom; start at the top instead.
+      requestAnimationFrame(() => (document.getElementById("terminal-window").scrollTop = 0));
+    </script>
   </body>
-
-  <footer class="dock" hx-boost="true">
-    <a
-      href="https://www.linkedin.com/in/sayhilel/"
-      title="Open LinkedIn"
-      target="_blank"
-    ></a>
-    <a
-      href="https://github.com/sayhilel"
-      title="Open GitHub"
-      target="_blank"
-    ></a>
-    <a href="mailto:dev.sahilsinha@gmail.com" title="Open Mail" target="_blank"></a>
-    <a
-      href="https://github.com/sayhilel/resume-pub/blob/main/pub/Sahil_Sinha_Resume_Pub.pdf"
-      title="Open Resume"
-      target="_blank"
-    ></a>
-    <a href="#" title="Toggle Terminal" onclick="toggleTerminal()"></a>
-  </footer>
-
-  <script src="/scripts/nav.js"></script>
-  <script>
-    (listenNav(), dragElement(document.getElementById("terminal")));
-  </script>
 </html>
