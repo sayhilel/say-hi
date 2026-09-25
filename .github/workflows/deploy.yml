@@ -1,0 +1,104 @@
+name: deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# One deployment at a time; a newer push waits rather than racing.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+env:
+  IMAGE: ghcr.io/${{ github.repository }}
+
+jobs:
+  ci:
+    uses: ./.github/workflows/ci.yml
+
+  build:
+    needs: ci
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write # push to GitHub Container Registry with GITHUB_TOKEN
+    outputs:
+      image: ${{ env.IMAGE }}:${{ github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          build-args: APP_VERSION=${{ github.sha }}
+          tags: |
+            ${{ env.IMAGE }}:${{ github.sha }}
+            ${{ env.IMAGE }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    # The Azure federated credential trusts only this environment, so add
+    # required reviewers here to get a manual approval gate.
+    environment:
+      name: production
+      url: ${{ steps.deploy.outputs.url }}
+    permissions:
+      contents: read
+      id-token: write # request the GitHub OIDC token that Azure exchanges
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Azure login (OIDC, no secrets)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: What-if (preview changes)
+        run: |
+          az deployment group what-if \
+            --resource-group "${{ vars.AZURE_RESOURCE_GROUP }}" \
+            --parameters infra/main.bicepparam \
+            --parameters image="${{ needs.build.outputs.image }}" \
+                         appVersion="${GITHUB_SHA::7}" \
+                         budgetContactEmail="${{ vars.BUDGET_EMAIL }}" \
+                         ownerPrincipalId="${{ vars.OWNER_PRINCIPAL_ID }}" \
+                         customDomainName="${{ vars.CUSTOM_DOMAIN }}" \
+                         customDomainCertificateId="${{ vars.CUSTOM_DOMAIN_CERT_ID }}"
+
+      - name: Deploy Bicep
+        id: deploy
+        run: |
+          url=$(az deployment group create \
+            --name "say-hi-${GITHUB_RUN_NUMBER}" \
+            --resource-group "${{ vars.AZURE_RESOURCE_GROUP }}" \
+            --parameters infra/main.bicepparam \
+            --parameters image="${{ needs.build.outputs.image }}" \
+                         appVersion="${GITHUB_SHA::7}" \
+                         budgetContactEmail="${{ vars.BUDGET_EMAIL }}" \
+                         ownerPrincipalId="${{ vars.OWNER_PRINCIPAL_ID }}" \
+                         customDomainName="${{ vars.CUSTOM_DOMAIN }}" \
+                         customDomainCertificateId="${{ vars.CUSTOM_DOMAIN_CERT_ID }}" \
+            --query properties.outputs.appUrl.value -o tsv)
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          echo "Deployed to $url" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Smoke test
+        run: |
+          url="${{ steps.deploy.outputs.url }}"
+          # The app scales to zero, so the first request may wait on a cold start.
+          curl -fsS --retry 10 --retry-delay 6 --retry-all-errors "$url/healthz"
+          # /readyz proves the managed identity can reach Cosmos DB.
+          curl -fsS --retry 5 --retry-delay 6 --retry-all-errors "$url/readyz"
+          curl -fsS -X POST -d command=cloud "$url/command" | grep -q "${GITHUB_SHA::7}"

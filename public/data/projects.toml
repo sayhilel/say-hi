@@ -39,8 +39,8 @@ accent = "blue"
 
 [[project]]
 name = "say-hi"
-technologies = "Go, Fiber, HTMX, JavaScript, HTML, CSS, Docker"
-description = """This website emulates a developer's command-line interface, styled after macOS, complete with a desktop environment and terminal interface. Navigation mirrors typical terminal commands. Developed using Go's Fiber framework and enhanced with AJAX transformations powered by HTMX, it operates within a Docker container deployed on Google Cloud Run."""
+technologies = "Go, Fiber, HTMX, Docker, Azure Container Apps, Cosmos DB, Bicep, GitHub Actions"
+description = """This website emulates a developer's command-line interface, styled after macOS, complete with a desktop environment and terminal interface. Navigation mirrors typical terminal commands. Developed using Go's Fiber framework and enhanced with AJAX transformations powered by HTMX, it runs as a distroless container on Azure Container Apps. The infrastructure is defined in Bicep, deployed by GitHub Actions using OIDC (no stored secrets), and the contact form and visitor counter are backed by Cosmos DB through a managed identity. Type "cloud" to see the live deployment."""
 url = "https://github.com/sayhilel/say-hi"
 ascii = """         
         ,_---~~~~~----._         
