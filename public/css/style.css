@@ -209,3 +209,64 @@ body {
 .dock a:nth-child(5) {
   background-image: url(images/terminal.svg)
 }
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  margin-top: 1rem;
+  max-width: 700px
+}
+
+.contact-form label {
+  display: flex;
+  gap: .5rem;
+  color: var(--nav)
+}
+
+.contact-form input,
+.contact-form textarea {
+  flex: 1;
+  background: 0 0;
+  color: #dcdcdc;
+  border: none;
+  border-bottom: .1rem solid #333;
+  outline: none;
+  resize: vertical
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-bottom-color: var(--accents)
+}
+
+.contact-form button {
+  align-self: flex-start;
+  background: 0 0;
+  border: none;
+  color: var(--accents);
+  cursor: pointer
+}
+
+.contact-form button:hover,
+.contact-form button:focus {
+  color: var(--nav)
+}
+
+.contact-form .hp {
+  position: absolute;
+  left: -10000px
+}
+
+.ok {
+  color: var(--nav)
+}
+
+.error {
+  color: #e06c75
+}
+
+.cloud pre {
+  color: var(--accents);
+  overflow-x: auto
+}

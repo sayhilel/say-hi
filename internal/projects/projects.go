@@ -4,6 +4,7 @@ import (
 	"github.com/BurntSushi/toml"
 	"github.com/gofiber/fiber/v2"
 	"os"
+	"strconv"
 )
 
 func check(e error) {
@@ -45,8 +46,8 @@ func (P Projects) ViewProjects(c *fiber.Ctx) error {
 }
 
 func (P Projects) HandleProjects(c *fiber.Ctx) error {
-	index, err := c.ParamsInt("index", 0)
-	if err != nil {
+	index, err := strconv.Atoi(c.Params("index"))
+	if err != nil || index < 0 || index >= len(P.PL) {
 		return c.Status(fiber.StatusBadRequest).SendString("Invalid project index")
 	}
 

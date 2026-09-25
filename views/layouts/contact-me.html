@@ -1,2 +1,15 @@
-{{block "contact" .}}<h3>Contact-me</h3><p>[Use (C-c) to return. You can also start typing to focus on prompt]</br>This section is currently under development<section class=contact>mail : <a href=mailto:dev.sahilsinha.com target=_blank>dev.sahilsinha@gmail.com</a><br>linkedin : <a href=mailto:dev.sahilsinha.com target=_blank>linkedin/sayhilel</a></section>{{template "prompt" .}}
+{{block "contact" .}}<h2>Ping: Contact-me</h2>
+<p>[Use (C-c) to return. Tab between fields, Enter to send.]</p>
+<section class=contact>
+  <p>mail : <a href=mailto:dev.sahilsinha@gmail.com target=_blank>dev.sahilsinha@gmail.com</a><br>
+  linkedin : <a href=https://www.linkedin.com/in/sayhilel/ target=_blank>linkedin/sayhilel</a></p>
+  <form class=contact-form hx-post=/contact hx-target=#contact-result hx-swap=innerHTML hx-disabled-elt="find button">
+    <label>name&nbsp;&nbsp;&nbsp;❯ <input name=name maxlength=100 required autocomplete=name autofocus></label>
+    <label>email&nbsp;&nbsp;❯ <input name=email type=email maxlength=254 required autocomplete=email></label>
+    <label>message❯ <textarea name=message maxlength=2000 rows=5 required></textarea></label>
+    <label class=hp aria-hidden=true>website <input name=website tabindex=-1 autocomplete=off></label>
+    <button type=submit>[ send ]</button>
+  </form>
+  <div id=contact-result></div>
+</section>
 {{end}}

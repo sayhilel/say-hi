@@ -2,13 +2,14 @@ package quote
 
 import (
 	"encoding/json"
-	"fmt"
+	"log/slog"
+	"time"
 
 	"github.com/gofiber/fiber/v2"
 )
 
 func GetQuote() map[string]string {
-	agent := fiber.Get("https://zenquotes.io/api/random")
+	agent := fiber.Get("https://zenquotes.io/api/random").Timeout(3 * time.Second)
 	_, body, errs := agent.Bytes()
 
 	if len(errs) > 0 {
@@ -21,7 +22,7 @@ func GetQuote() map[string]string {
 	json.Unmarshal(body, &quotes)
 
 	if len(quotes) == 0 {
-		fmt.Println("QUOTES ARE BROKEN")
+		slog.Warn("quotes api returned no quotes")
 		return map[string]string{
 			"Err": "No quotes found",
 		}

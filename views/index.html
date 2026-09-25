@@ -27,7 +27,7 @@
         <span class="dot" onclick="toggleTerminal()"></span>
       </div>
       <div class="terminal-window" id="terminal-window">
-        <p>[COLD RUN] Initializing.... New session for viewer</p>
+        <p>[COLD RUN] Initializing.... New session for viewer{{if .visitor}} #{{.visitor}}{{end}}</p>
         {{template "landing" .}}
       </div>
     </main>
@@ -44,7 +44,7 @@
       title="Open GitHub"
       target="_blank"
     ></a>
-    <a href="mailto:dev.sahilsinha.com" title="Open Mail" target="_blank"></a>
+    <a href="mailto:dev.sahilsinha@gmail.com" title="Open Mail" target="_blank"></a>
     <a
       href="https://github.com/sayhilel/resume-pub/blob/main/pub/Sahil_Sinha_Resume_Pub.pdf"
       title="Open Resume"
@@ -55,8 +55,6 @@
 
   <script src="/scripts/nav.js"></script>
   <script>
-    (listenNav(),
-      dragElement(document.getElementById("terminal")),
-      dragElement(document.getElementById("calendly")));
+    (listenNav(), dragElement(document.getElementById("terminal")));
   </script>
 </html>

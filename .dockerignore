@@ -1,3 +1,9 @@
-go.mod .
-go.sum .
-
+.git
+.github
+.air.toml
+tmp
+docs
+infra
+README.md
+Dockerfile
+*.bin

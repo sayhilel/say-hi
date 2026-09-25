@@ -5,6 +5,8 @@ function listenNav() {
       (t.preventDefault(), htmx.ajax("GET", "landing", "#terminal-window"));
       return;
     }
+    // Let people type in the contact form without the prompt stealing focus.
+    if (t.target.closest && t.target.closest(".contact-form")) return;
     let n = document.getElementById("command");
     n && n.focus();
     let s = document.getElementById("projects");
@@ -35,7 +37,7 @@ function listenNav() {
       switch (t.key) {
         case "y":
           (window.open(
-            "https://github.com/sayhilel/resume/blob/main/pub/Sahil_Sinha_Resume_Pub.pdf",
+            document.querySelector('.dock a[title="Open Resume"]').href,
             "_blank",
           ),
             htmx.ajax("GET", "landing", "#terminal-window"));
