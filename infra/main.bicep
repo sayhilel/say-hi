@@ -29,11 +29,8 @@ param budgetAmount int = 1
 @description('Budget start date; must be the first day of a month.')
 param budgetStartDate string = utcNow('yyyy-MM-01')
 
-@description('Optional custom domain already bound to the app (see docs/deploy.md).')
-param customDomainName string = ''
-
-@description('Resource ID of the managed certificate for customDomainName.')
-param customDomainCertificateId string = ''
+@description('Comma-separated custom hostnames already set up per docs/deploy.md, e.g. "sahilsinha.me,www.sahilsinha.me".')
+param customDomains string = ''
 
 var suffix = uniqueString(resourceGroup().id)
 var cosmosDatabase = 'sayhi'
@@ -87,8 +84,7 @@ module app 'modules/containerapp.bicep' = {
     identityClientId: identity.outputs.clientId
     cosmosEndpoint: cosmos.outputs.endpoint
     cosmosDatabase: cosmosDatabase
-    customDomainName: customDomainName
-    customDomainCertificateId: customDomainCertificateId
+    customDomains: filter(map(split(customDomains, ','), d => trim(d)), d => !empty(d))
   }
 }
 
