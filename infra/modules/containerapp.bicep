@@ -28,11 +28,8 @@ param cosmosEndpoint string
 @description('Cosmos DB database name.')
 param cosmosDatabase string
 
-@description('Optional custom domain already bound to the app (see docs/deploy.md). Leave empty for none.')
-param customDomainName string = ''
-
-@description('Resource ID of the managed certificate for customDomainName.')
-param customDomainCertificateId string = ''
+@description('Custom hostnames bound to the app, e.g. [\'sahilsinha.me\', \'www.sahilsinha.me\']. Each needs a managed certificate named cert-<hostname with dots replaced by dashes> in the environment; see docs/deploy.md.')
+param customDomains array = []
 
 resource workspace 'Microsoft.OperationalInsights/workspaces@2023-09-01' existing = {
   name: logAnalyticsWorkspaceName
@@ -76,15 +73,16 @@ resource app 'Microsoft.App/containerApps@2024-03-01' = {
         targetPort: 8080
         transport: 'auto'
         allowInsecure: false // HTTP is redirected to HTTPS
-        customDomains: empty(customDomainName)
-          ? []
-          : [
-              {
-                name: customDomainName
-                certificateId: customDomainCertificateId
-                bindingType: 'SniEnabled'
-              }
-            ]
+        // Managed certificates are issued once by the CLI (they need the
+        // hostname to exist first), then referenced here by their fixed name so
+        // every redeploy keeps the bindings.
+        customDomains: [
+          for host in customDomains: {
+            name: host
+            certificateId: '${environment.id}/managedCertificates/cert-${replace(host, '.', '-')}'
+            bindingType: 'SniEnabled'
+          }
+        ]
       }
     }
     template: {
