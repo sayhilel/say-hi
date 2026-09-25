@@ -41,35 +41,43 @@ The job summary shows the URL, `https://say-hi.<random>.<region>.azurecontainera
 - **Monitor → Workbooks → say-hi operations** should show requests. Logs take about 2–5 minutes to arrive.
 - **Cost Management → Cost analysis** for `rg-say-hi` should show $0.00.
 
-## 5. Custom domain (optional, e.g. sayhilel.com)
-Container Apps issues free managed TLS certificates. Binding one is a one-time CLI step, because the certificate can only be issued after DNS validation:
+## 5. Custom domain (optional, e.g. sahilsinha.me)
+Container Apps issues free managed TLS certificates. The certificates are created once with the CLI, because a certificate can only be issued after the hostname is on the app. Bicep then refers to them by a fixed name, `cert-<hostname-with-dashes>`, so every deploy keeps the bindings.
 
+**DNS.** Get the values:
 ```bash
-RG=rg-say-hi; APP=say-hi; ENV=say-hi-env; DOMAIN=www.sayhilel.com
-
-# Values for your DNS records:
-az containerapp show -g $RG -n $APP --query properties.configuration.ingress.fqdn -o tsv
-az containerapp show -g $RG -n $APP --query properties.customDomainVerificationId -o tsv
+az containerapp show -g rg-say-hi -n say-hi --query properties.configuration.ingress.fqdn -o tsv
+az containerapp show -g rg-say-hi -n say-hi --query properties.customDomainVerificationId -o tsv
+az containerapp env show -g rg-say-hi -n say-hi-env --query properties.staticIp -o tsv
 ```
 
-At your DNS provider, create:
-- `CNAME www` → the app FQDN
-- `TXT asuid.www` → the verification ID
+Then create these records at your DNS provider:
 
-For an apex domain (`sayhilel.com`), use an `A` record to the environment's static IP (`az containerapp env show -g $RG -n $ENV --query properties.staticIp`) plus `TXT asuid` → the verification ID, and use `--validation-method HTTP` below.
+| Record | Type | Value |
+|---|---|---|
+| `www` | CNAME | app FQDN |
+| `@` (apex) | A | environment static IP (or CNAME/ALIAS if the provider flattens it) |
+| `asuid.www` | TXT | verification ID |
+| `asuid` | TXT | verification ID |
 
-Then bind the domain:
+**Bind (once per hostname):**
 ```bash
-az containerapp hostname add  -g $RG -n $APP --hostname $DOMAIN
-az containerapp hostname bind -g $RG -n $APP --hostname $DOMAIN \
-  --environment $ENV --validation-method CNAME
-
-# Get the certificate ID so future Bicep deploys keep the binding:
-az containerapp env certificate list -g $RG -n $ENV --managed-certificates-only \
-  --query "[?properties.subjectName=='$DOMAIN'].id" -o tsv
+RG=rg-say-hi; APP=say-hi; ENV=say-hi-env
+bind() { # $1 = hostname, $2 = CNAME (subdomain) or HTTP (apex)
+  local name="cert-${1//./-}"
+  az containerapp hostname add -g $RG -n $APP --hostname "$1"
+  az containerapp env certificate create -g $RG -n $ENV --hostname "$1" \
+    --validation-method "$2" --certificate-name "$name"
+  # wait until: az containerapp env certificate list -g $RG -n $ENV --managed-certificates-only
+  #             shows provisioningState "Succeeded" for $name
+  az containerapp hostname bind -g $RG -n $APP --hostname "$1" --environment $ENV \
+    --certificate "$name"
+}
+bind www.sahilsinha.me CNAME
+bind sahilsinha.me HTTP
 ```
 
-Set repository variables `CUSTOM_DOMAIN=$DOMAIN` and `CUSTOM_DOMAIN_CERT_ID=<id>`. Without them, the next Bicep deployment would remove the binding, because Bicep declares the complete desired state.
+**Keep them on redeploy:** set the repository variable `CUSTOM_DOMAINS=sahilsinha.me,www.sahilsinha.me`.
 
 ## Rollback
 Each deploy creates a new revision tagged with the commit SHA. Either:

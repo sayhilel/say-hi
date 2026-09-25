@@ -74,8 +74,7 @@ jobs:
                          appVersion="${GITHUB_SHA::7}" \
                          budgetContactEmail="${{ vars.BUDGET_EMAIL }}" \
                          ownerPrincipalId="${{ vars.OWNER_PRINCIPAL_ID }}" \
-                         customDomainName="${{ vars.CUSTOM_DOMAIN }}" \
-                         customDomainCertificateId="${{ vars.CUSTOM_DOMAIN_CERT_ID }}"
+                         customDomains="${{ vars.CUSTOM_DOMAINS }}"
 
       - name: Deploy Bicep
         id: deploy
@@ -88,8 +87,7 @@ jobs:
                          appVersion="${GITHUB_SHA::7}" \
                          budgetContactEmail="${{ vars.BUDGET_EMAIL }}" \
                          ownerPrincipalId="${{ vars.OWNER_PRINCIPAL_ID }}" \
-                         customDomainName="${{ vars.CUSTOM_DOMAIN }}" \
-                         customDomainCertificateId="${{ vars.CUSTOM_DOMAIN_CERT_ID }}" \
+                         customDomains="${{ vars.CUSTOM_DOMAINS }}" \
             --query properties.outputs.appUrl.value -o tsv)
           echo "url=$url" >> "$GITHUB_OUTPUT"
           echo "Deployed to $url" >> "$GITHUB_STEP_SUMMARY"
